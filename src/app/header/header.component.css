@@ -5,13 +5,7 @@ img{
     
 } */
 .head-wrapper{
-    width:100vw;
-    height: 50vw;
-    background-repeat: no-repeat;
-    background-position:center;   
-     background-size: cover;
-    margin:0vw;
-    background-image:url(../../assets/images/background.jpg);
+   
 }
 .mat-toolbar-row{
     direction: rtl;
