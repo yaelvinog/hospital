@@ -1,0 +1,29 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+ mat-form-field {
+    display: block;
+}
+.cardLogin{
+    position: absolute;
+    left:34.5vw;
+    width:50vw;
+    top:4vw;
+    height:30vw;
+}
+.LoginContent{
+    position:absolute;
+    top:10vw;
+    width:28vw;
+
+}
+.LoginSubmit{
+    position: absolute;
+    top:16vw;
+    left:11.8vw;
+}
+.active{
+    left:3vw;
+}

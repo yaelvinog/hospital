@@ -1,0 +1,42 @@
+
+.chooseHospital{
+    left: 80vw;
+position: absolute;
+    top:5vw;
+}
+.chooseDepartment{
+    left: 80vw;
+    position: absolute;
+    top:10vw;
+}
+.isExistHospital{
+    left: 65vw;
+    position: absolute;
+    top:5.6vw;
+}
+.isExistDepartment{
+    left: 65vw;
+    position: absolute;
+    top:10.6vw;
+}
+  .titleOpinion{
+      position: absolute;
+      top:20vw;
+      left: 44.5vw;
+      width:50vw;
+  }
+  .txtareaHospital{
+    height: 1vw;
+  }
+  .txtareaDepartment{
+      height:6vw;
+  }
+  .contentOpinion{
+    position: absolute;
+    top:26vw;
+    left: 44.5vw;
+    width:50vw;
+  }
+  .dirTitlel{
+      direction: rtl;
+  }

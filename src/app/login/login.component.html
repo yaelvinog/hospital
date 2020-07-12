@@ -1,0 +1,31 @@
+<mat-card class="cardLogin">
+  <nav mat-tab-nav-bar>
+    <a  mat-tab-link label="Log In" routerLink="/login" routerLinkActive="active" [active]="true">Log In </a>
+    <a mat-tab-link label="Sign Up" routerLink="/signUp" routerLinkActive="active">Sign Up </a>
+  </nav>
+  <!-- <mat-tab-group>
+    <mat-tab-link label="Log In" routerLink='/login' routerLinkActive="active"></mat-tab-link>
+    <mat-tab-link label="Sign Up"  routerLink='/SignUp' routerLinkActive="active"> </mat-tab-link>
+  </mat-tab-group> -->
+  <mat-card-content class="LoginContent">
+    <form [formGroup]="LoginForm" (ngSubmit)="submitForm()">
+      <h2>log In</h2>
+      <mat-error *ngIf="!IsExist">
+        The username and password were not recognised
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="email" required>
+        <!-- <mat-error>
+         Please provide a valid email address
+        </mat-error> -->
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Password" formControlName="password" required>
+        <!-- <mat-error>
+        Please provide a valid password
+       </mat-error> -->
+      </mat-form-field>
+      <button mat-flat-button color="accent" type="submit" class="Loginubmit">login</button>
+    </form>
+  </mat-card-content>
+</mat-card>

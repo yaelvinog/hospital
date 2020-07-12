@@ -1,0 +1,29 @@
+<mat-form-field class="chooseHospital">
+    <mat-label>בחר בית חולים</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let item of LocalArr"> {{item.HospitalName}}</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field class="chooseDepartment">
+    <mat-label>בחר מחלקה</mat-label>
+    <mat-select>
+      <mat-option></mat-option>
+    </mat-select>
+</mat-form-field> 
+  <mat-form-field class="example-form-field">
+  <mat-label>Clearable input</mat-label>
+  <input matInput type="text" [(ngModel)]="headerOp"> 
+  <button mat-button *ngIf="headerOp" matSuffix mat-icon-button aria-label="Clear" (click)="headerOp=''">
+     <mat-icon>close</mat-icon> 
+     </button>
+</mat-form-field>
+<button mat-flat-button color="accent" class="isExistHospital">בית החולים לא קיים ברשימה</button>
+<button mat-flat-button color="accent" class="isExistDepartment">המחלקה לא קיימת ברשימה</button>
+<mat-form-field appearance="fill" class="titleOpinion">
+  <mat-label class="dirTitle">כותרת חוות הדעת</mat-label>
+  <textarea matInput class="txtareaHospital"></textarea>
+</mat-form-field>
+<mat-form-field appearance="fill" class="contentOpinion">
+  <mat-label >תוכן חוות הדעת</mat-label>
+  <textarea matInput class="txtareaDepartment"></textarea>
+</mat-form-field>
