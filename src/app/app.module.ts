@@ -20,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     OpinionComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    
   ],
   imports: [
     BrowserModule,

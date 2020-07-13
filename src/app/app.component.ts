@@ -13,7 +13,6 @@ export class AppComponent {
   // this.usersSrv.getUsers().subscribe(data=>{
   //   this.users=data;
   // })
-
   }
   constructor(){
 
