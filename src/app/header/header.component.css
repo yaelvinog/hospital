@@ -1,22 +1,38 @@
-/* 
-img{
-    width:98vw;
-    height:50vw;
-    
-} */
-.head-wrapper{
-   
-}
+
 .mat-toolbar-row{
     direction: rtl;
     margin-left:-35vw;
 }
 .mat-toolbar-multiple-rows {
-    background-color: beige;
+    background-color:  #47927f;
 }
 .profil{
-   position: absolute;
+    width: 4vw;
+    top: -0.5vw;
+    position: absolute;
+    left: 15vw;
 }
-.mat-button{
-    margin:25px;
+.divHeader{
+    position: absolute;
+    width: 100%;
+    left: 0vw;
+}
+#addOpinion{
+    position: absolute;
+    background-color:black;
+    left: 25vw;
+    color: #47927f;
+}
+#btnSearch{
+    position: absolute;
+    left: 37vw;
+    color: #47927f;
+    background-color:black;
+}
+#location{
+    position: relative;
+    margin-right: 14vw;
+    width: 10vw;
+    color: #47927f;
+    background-color:black;
 }
