@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DBService } from '../db.service';
+import { Hospital } from '../hospital';
+import { Department } from '../department';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  arr:Hospital[];
+  arr2:Department[];
+  constructor(private HospitalService:DBService) { }
 
   ngOnInit(): void {
+   this.getData();
   }
-
+  getData():void
+  {
+  this.HospitalService.GetAllData().subscribe(response=>{
+    this.arr=<Hospital[]>response;
+  })
+}  
 }

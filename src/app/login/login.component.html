@@ -1,31 +1,24 @@
+
+<div class="body-content">
 <mat-card class="cardLogin">
   <nav mat-tab-nav-bar>
-    <a  mat-tab-link label="Log In" routerLink="/login" routerLinkActive="active" [active]="true">Log In </a>
-    <a mat-tab-link label="Sign Up" routerLink="/signUp" routerLinkActive="active">Sign Up </a>
+    <a  mat-tab-link label="Log In" routerLink="/login" routerLinkActive="active" [active]="true">התחבר </a>
+    <a mat-tab-link label="Sign Up" routerLink="/signUp" routerLinkActive="active"> הרשם </a>
   </nav>
-  <!-- <mat-tab-group>
-    <mat-tab-link label="Log In" routerLink='/login' routerLinkActive="active"></mat-tab-link>
-    <mat-tab-link label="Sign Up"  routerLink='/SignUp' routerLinkActive="active"> </mat-tab-link>
-  </mat-tab-group> -->
   <mat-card-content class="LoginContent">
     <form [formGroup]="LoginForm" (ngSubmit)="submitForm()">
-      <h2>log In</h2>
+      <h2>התחבר</h2>
       <mat-error *ngIf="!IsExist">
         The username and password were not recognised
       </mat-error>
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="Email" formControlName="email" required>
-        <!-- <mat-error>
-         Please provide a valid email address
-        </mat-error> -->
+        <input matInput placeholder="מייל" formControlName="email" required>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="Password" formControlName="password" required>
-        <!-- <mat-error>
-        Please provide a valid password
-       </mat-error> -->
+        <input matInput placeholder="סיסמא" formControlName="password" required>
       </mat-form-field>
-      <button mat-flat-button color="accent" type="submit" class="Loginubmit">login</button>
+      <button mat-flat-button  type="submit" class="LoginSubmit" >login</button>
     </form>
   </mat-card-content>
 </mat-card>
+</div>

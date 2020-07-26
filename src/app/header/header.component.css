@@ -1,22 +1,33 @@
-/* 
-img{
-    width:98vw;
-    height:50vw;
-    
-} */
-.head-wrapper{
-   
-}
+
 .mat-toolbar-row{
     direction: rtl;
-    margin-left:-35vw;
+}
+#main_menu{
+    font-size:120%;
+    box-shadow:0px 0px 10px #404040;
+    height:4em;
+    position:fixed;
+    z-index: 100;
+    background: white;
+    opacity: 0.9;
+    width:100%;
 }
 .mat-toolbar-multiple-rows {
-    background-color: beige;
+ background-color: white;
 }
-.profil{
-   position: absolute;
+.div-header a{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #b39c89;  
+    margin: 0px 20px;
+    text-decoration:none; 
 }
-.mat-button{
-    margin:25px;
+.div-header a:hover{
+    color:mediumseagreen;
+    font-weight: bold;
+    /* font-size: 1.2em; */
+    transition: all 0.2s;
+    transform: scale(1.2);
+}
+.div-header{
+    margin: 0px auto; 
 }

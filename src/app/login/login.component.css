@@ -1,6 +1,6 @@
 mat-card {
     max-width: 400px;
-    margin: 2em auto;
+    margin: 2em auto; 
     text-align: center;
 }
  mat-form-field {
@@ -8,10 +8,11 @@ mat-card {
 }
 .cardLogin{
     position: absolute;
-    left:34.5vw;
+    left:18.5vw;
     width:50vw;
     top:4vw;
-    height:30vw;
+    height:28vw;
+    border-radius: unset;
 }
 .LoginContent{
     position:absolute;
@@ -23,7 +24,26 @@ mat-card {
     position: absolute;
     top:16vw;
     left:11.8vw;
+    background-color: #b9a693;
 }
 .active{
     left:3vw;
+}
+.mat-tab-link {
+    height: 48px;
+    /* padding: 0 24px; */
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 196px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    vertical-align: top;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
 }

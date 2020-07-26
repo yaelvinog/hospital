@@ -11,5 +11,4 @@ export class HEADERComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -1,15 +1,13 @@
-
- 
-  <mat-toolbar>
+ <div id="main_menu">
+<mat-toolbar>
   <mat-toolbar-row>
-    <div class="head-wrapper"></div>
-    <span class="menu-spacer"></span>
-    <div>
-      <a mat-button> מיקום </a>
-      <a mat-button> הוסף חוות דעת </a>
-      <a><img src="/assets/images/profil.png" class="profil"></a>
-      <a mat-button> חיפוש</a>
+    <div class="div-header">
+      <a id="location"> מיקום </a>
+      <a  routerLink="/opinion" id="addOpinion" routerLinkActive="active" > הוסף חוות דעת </a>
+      <!-- <a routerLink="/login" routerLinkActive="active"><img  src="/assets/images/profil.png" class="profil"></a> -->
+      <a routerLink="/login" id="profil" routerLinkActive="active">כניסה</a>
+      <a id="btnSearch"> חיפוש</a>
     </div>
-    
   </mat-toolbar-row>
-</mat-toolbar>    
+</mat-toolbar>
+</div>

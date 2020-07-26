@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
 this.ServiceUser.getUsers(this.email.value,this.password.value).subscribe(result=>{
 if(!result)
    this.IsExist=false;
+else
+    localStorage.setItem(this.email.value,JSON.stringify(this.password.value));
 });
-  }
+}
 }

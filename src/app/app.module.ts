@@ -12,6 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import {SlideshowModule} from 'ng-simple-slideshow';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { MatIconModule } from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     OpinionComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,11 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-  
+    SlideshowModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   exports:[MaterialModule],
   providers: [],

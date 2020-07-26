@@ -1,15 +1,28 @@
+import { ThrowStmt } from '@angular/compiler';
+import { getLocaleDateFormat } from '@angular/common';
+
 export class User {
     UserId:number;
     UserName:string;
     Email:string;
     UserPassword:string;
-    IdentityDetails:string;
     UserImage:string;
     CreateDate:Date;
-    constructor(UserName:string,Email:string,UserPassword:string){
-       this.UserName=UserName;
+    Summary:string;
+    IsDisabled:boolean;
+    IsAdmin:boolean;
+    
+    constructor(UserName?:string,Email?:string,UserPassword?:string,UserImage?:string,CreateDate?:Date,Summary?:string,IsDisabled?:boolean,IsAdmin?:boolean){
+     
+        this.UserName=UserName;
        this.Email=Email;
        this.UserPassword=UserPassword;
+       this.UserImage=UserImage;
+       this.CreateDate=CreateDate;
+       this.Summary=Summary;
+       this.IsDisabled=IsDisabled;
+       this.IsAdmin=IsAdmin;
     }
 }
-//nvarchr(max)לשנות בדאטה בייס את המשתנה תמונה לסוג:
+
+

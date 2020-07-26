@@ -9,15 +9,18 @@ import { UsersService } from './users.service';
 export class AppComponent {
   title = 'HospitalAdvisor';
   users:any;
+  
   ngOnInit(){
   // this.usersSrv.getUsers().subscribe(data=>{
   //   this.users=data;
   // })
 
   }
+  
   constructor(){
 
   }
+
 
 }
 

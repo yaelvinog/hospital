@@ -1,29 +1,22 @@
 
-.chooseHospital{
-    left: 80vw;
-position: absolute;
-    top:5vw;
+.select-filter{
+  display: inline-block;
+  direction: rtl;
+  text-align: right;
 }
-.chooseDepartment{
-    left: 80vw;
-    position: absolute;
-    top:10vw;
+.btn-isexists{
+    background-color: #b9a693;
+    display: inline-block;
+    margin-right: 15px;
 }
-.isExistHospital{
-    left: 65vw;
-    position: absolute;
-    top:5.6vw;
-}
-.isExistDepartment{
-    left: 65vw;
-    position: absolute;
-    top:10.6vw;
+mat-label{
+    float: right;
 }
   .titleOpinion{
       position: absolute;
-      top:20vw;
-      left: 44.5vw;
-      width:50vw;
+      top:16vw;
+      left: 35vw;
+      width:30vw;
   }
   .txtareaHospital{
     height: 1vw;
@@ -33,9 +26,9 @@ position: absolute;
   }
   .contentOpinion{
     position: absolute;
-    top:26vw;
-    left: 44.5vw;
-    width:50vw;
+    top:21vw;
+    left:35vw;
+    width:30vw;
   }
   .dirTitlel{
       direction: rtl;
