@@ -28,6 +28,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     SignUpComponent,
     HomeComponent,
     StarRatingComponent
+    
   ],
   imports: [
     BrowserModule,
