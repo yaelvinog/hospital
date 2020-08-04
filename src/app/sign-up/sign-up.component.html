@@ -7,9 +7,6 @@
   <mat-card-content class="SignContent">
       <form [formGroup]="SignForm" (ngSubmit)="signform()">
       <h2>הרשם</h2>
-      <mat-error *ngIf="register">
-        You have successfully registered
-      </mat-error>
     <mat-form-field class="full-width-input"> 
         <input matInput placeholder="שם משתמש" formControlName="Signusername" required>
     </mat-form-field>

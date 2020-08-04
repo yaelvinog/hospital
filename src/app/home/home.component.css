@@ -1,0 +1,66 @@
+
+.card-block {
+    font-size: 1em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  
+    background-color: rgba(255,255,255,0.6);
+    z-index: 1;
+}
+
+div p{
+    text-align: center;
+    font-size: 1.15em;
+    line-height: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none;
+    color: #645252;
+    margin: 0px;
+}
+mat-icon, .mat-icon{
+    color: #b73232;
+}
+.card {
+    position: relative;
+    font-size: 1em;
+    overflow: hidden;
+    margin: 3%;
+    width: 19%;
+    height: 70vh;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #e72f22, 0 0 0 1px;
+    /* margin-left: 4vw; */
+    margin-top: 10vw;
+    /* margin-right: 4vw; */
+    display: inline-block;
+}
+p.rating{
+    margin:-18px;
+    margin-left:7vw;
+}
+.p_rating{
+
+}
+.rating-wrapper{
+    
+        position: absolute;
+        top: 50%;
+        right: 0;
+        height: 50%;
+        width: 100%;
+}
+.rating-wrapper p{
+    direction: rtl;
+}
+.div-header-wrapper{
+    z-index: 1111;
+    position: relative;
+    padding-top: 20px;
+}

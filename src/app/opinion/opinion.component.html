@@ -24,6 +24,7 @@
      <mat-icon>close</mat-icon> 
      </button>
 </mat-form-field> -->
+<app-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></app-star-rating>
 
 
 <mat-form-field appearance="fill" class="titleOpinion">
@@ -35,4 +36,3 @@
   <textarea matInput class="txtareaDepartment"></textarea>
 </mat-form-field>
 </div>
-<app-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></app-star-rating>

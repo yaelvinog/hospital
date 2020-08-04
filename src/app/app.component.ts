@@ -9,11 +9,13 @@ import { UsersService } from './users.service';
 export class AppComponent {
   title = 'HospitalAdvisor';
   users:any;
-  
+  slides:[
+    { src: "https://image1.com" },
+    { src: "https://image2.com" },
+    { src: "https://image3.com" },
+    { src: "https://image4.com" }
+]
   ngOnInit(){
-  // this.usersSrv.getUsers().subscribe(data=>{
-  //   this.users=data;
-  // })
   }
   
   constructor(){

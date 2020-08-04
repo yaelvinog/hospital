@@ -3,6 +3,7 @@ import { Hospital } from '../hospital';
 import { DBService } from '../db.service';
 import { Department } from '../department';
 
+
 @Component({
   selector: 'app-opinion',
   templateUrl: './opinion.component.html',
@@ -12,17 +13,16 @@ export class OpinionComponent implements OnInit {
   headerOp:string;
   selectedHospital: string;
   selectedDepartment:string;
-  LocalArr:Hospital[];
-  LocalArrDep:Department[];
+  LocalArr:Hospital[]=[];
+  LocalArrDep:Department[]=[];
   starColor:string="primary";
   starCount:number=5;
-rating:number=1
+  rating:number=1
   constructor(private HospitalService:DBService) {
   //  this.getCurrentLocation();
     this.HospitalService.getHospital().subscribe(response=>{
       this.LocalArr=<Hospital[]>response;
     })
-    
   }
   onRatingChanged(stars:number){
     this.rating=stars

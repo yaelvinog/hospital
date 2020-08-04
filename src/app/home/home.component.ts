@@ -11,10 +11,16 @@ import { Department } from '../department';
 export class HomeComponent implements OnInit {
   arr:Hospital[];
   arr2:Department[];
+  starColor:string="primary";
+  starCount:number=5;
+  rating:number=1
   constructor(private HospitalService:DBService) { }
 
   ngOnInit(): void {
    this.getData();
+  }
+  onRatingChanged(stars:number){
+    this.rating=stars
   }
   getData():void
   {

@@ -8,9 +8,9 @@
   <mat-card-content class="LoginContent">
     <form [formGroup]="LoginForm" (ngSubmit)="submitForm()">
       <h2>התחבר</h2>
-      <mat-error *ngIf="!IsExist">
+      <!-- <mat-error *ngIf="!IsExist">
         The username and password were not recognised
-      </mat-error>
+      </mat-error> -->
       <mat-form-field class="full-width-input">
         <input matInput placeholder="מייל" formControlName="email" required>
       </mat-form-field>

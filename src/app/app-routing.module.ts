@@ -5,6 +5,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { OpinionComponent } from './opinion/opinion.component';
 import { LoginGuardService } from './login-guard.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -25,6 +26,10 @@ const routes: Routes = [
 {
   path:'opinion',canActivate:[LoginGuardService],
   component:OpinionComponent
+},
+{
+  path:'footer',
+  component:FooterComponent
 }
 ];
 
