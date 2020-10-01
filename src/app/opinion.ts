@@ -1,4 +1,3 @@
-import { runInThisContext } from 'vm';
 
 export class Opinion {
     OpinionId:number;
@@ -6,25 +5,27 @@ export class Opinion {
     DepartmentId:number;
     Title:string;
     Summary:string;
-    Rating1GeneralSatisfaction:string;
-    Rating2ListenAndRelate:string;
-    Rating3GettingHelpEasily:string;
-    Rating4SharingInformation:string;
-    Rating5AnEfficientProcess:string;
-    Rating6ConditionsOfHospitalization:string;
-    Rating7PreventionOfMedicalErrors:string;
+    Rating1GeneralSatisfaction:number;
+    Rating2ListenAndRelate:number;
+    Rating3GettingHelpEasily:number;
+    Rating4SharingInformation:number;
+    Rating5AnEfficientProcess:number;
+    Rating6ConditionsOfHospitalization:number;
+    Rating7PreventionOfMedicalErrors:number;
     IsConfirmed:boolean;
-    constructor(OpinionId:number,UserId:number,DepartmentId:number,Title:string,Summary:string,
-        Rating1GeneralSatisfaction:string,
-        Rating2ListenAndRelate:string,
-        Rating3GettingHelpEasily:string,
-        Rating4SharingInformation:string,
-        Rating5AnEfficientProcess:string,
-        Rating6ConditionsOfHospitalization:string,
-        Rating7PreventionOfMedicalErrors:string,
-        IsConfirmed:boolean)
+    TotalRating:number;
+    constructor(OpinionId?:number,UserId?:number,DepartmentId?:number,Title?:string,Summary?:string,
+        Rating1GeneralSatisfaction?:number,
+        Rating2ListenAndRelate?:number,
+        Rating3GettingHelpEasily?:number,
+        Rating4SharingInformation?:number,
+        Rating5AnEfficientProcess?:number,
+        Rating6ConditionsOfHospitalization?:number,
+        Rating7PreventionOfMedicalErrors?:number,
+        IsConfirmed?:boolean,
+        TotalRating?:number,)
         {
-            this.OpinionId=OpinionId;
+            this.OpinionId=0;
             this.UserId=UserId;
             this.DepartmentId=DepartmentId;
             this.Title=Title;
@@ -36,7 +37,8 @@ export class Opinion {
             this.Rating5AnEfficientProcess=Rating5AnEfficientProcess;
             this.Rating6ConditionsOfHospitalization=Rating6ConditionsOfHospitalization;
             this.Rating7PreventionOfMedicalErrors=Rating7PreventionOfMedicalErrors;
-            this.IsConfirmed=IsConfirmed;
+            this.IsConfirmed=true;
+            this.TotalRating=0;
         }
         
     

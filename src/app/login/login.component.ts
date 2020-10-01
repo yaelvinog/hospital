@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../users.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   LoginForm:FormGroup;
   IsExist=true;
-  constructor(private fb:FormBuilder,private ServiceUser:UsersService) { }
+  hide=true;
+  constructor(private fb:FormBuilder,private ServiceUser:UsersService, private router:Router) { }
   ngOnInit():void{
     this.LoginForm=this.fb.group({
       email:["",[Validators.email,Validators.required]],
@@ -25,17 +27,21 @@ export class LoginComponent implements OnInit {
     return this.LoginForm.get("password");
   }
   submitForm():void{
-    this.ServiceUser.getUsers(this.email.value,this.password.value).subscribe(result=>{
-      if(!result)
-        // this.IsExist=false;
+    this.ServiceUser.getUsers(this.email.value,this.password.value).subscribe(user=>{
+      if(!user)
         Swal.fire(
-          "The username and password were not recognised"
+          "שם המשתמש והסיסמה לא זוהו"
         );
     else
-        localStorage.setItem(this.email.value,JSON.stringify(this.password.value));
+        localStorage.setItem('user',JSON.stringify(user));
+        this.router.navigateByUrl("opinion");
+
 },(err=>{
   Swal.fire(
-    'Oops...', 'Something went wrong!', 'error');
+'): !אופס..., משהו השתבש');
 }));
+}
+forgotPasswd():void{
+    
 }
 }

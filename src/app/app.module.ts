@@ -19,6 +19,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {CarouselComponent } from './carousel/carousel.component';
+ import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { AgmCoreModule } from '@agm/core';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { DepartmentDetailsCardComponent } from './department-details-card/department-details-card.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +35,9 @@ import {CarouselComponent } from './carousel/carousel.component';
     SignUpComponent,
     HomeComponent,
     StarRatingComponent,
-    CarouselComponent
-    
+    CarouselComponent,
+    DepartmentDetailsCardComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -39,12 +46,17 @@ import {CarouselComponent } from './carousel/carousel.component';
     MaterialModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     SlideshowModule,
     MatIconModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    IvyCarouselModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC-SQwC15UXZF4P4eE8kWJTJCaMoxdJMpE',libraries: ["places"]
+    })
   ],
   exports:[MaterialModule],
   providers: [],

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 import { UsersService } from '../users.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -11,8 +12,12 @@ import Swal from 'sweetalert2'
 export class SignUpComponent implements OnInit {
   SignForm: FormGroup;
   register = false;
-
-  constructor(private formbuilder: FormBuilder, private userSrevice: UsersService) { }
+  hide = true;
+  cnt=0;
+  public images = [];
+  public imagesFiles: File;
+  public imageSrc = '';
+  constructor(private formbuilder: FormBuilder, private userSrevice: UsersService, private router:Router) { }
 
   ngOnInit(): void {
     this.SignForm = this.formbuilder.group({
@@ -28,22 +33,34 @@ export class SignUpComponent implements OnInit {
   get Signemail() {
     return this.SignForm.get("Signemail");
   }
-  get signPasswd() {
+  get SignPasswd() {
     return this.SignForm.get("SignPasswd");
   }
+ 
   signform(): void {
-    let user: User = new User(this.Signusername.value, this.Signemail.value, this.signPasswd.value, " ", new Date(), "", false, false);
+    
+    let user: User = new User(this.Signusername.value, this.Signemail.value, this.SignPasswd.value, " ", new Date(), "", false, false);
     this.userSrevice.addUser(user).subscribe(response => {
-      if (response)
+      if (response){
       Swal.fire(
-        'Success',
-        'The data has been saved successfully.',
-        'success'
+        '(:הנתונים נשמרו בהצלחה.'
       );
-
+      localStorage.setItem('user',JSON.stringify(user));
+      this.router.navigateByUrl("opinion");
+    }
     }, (err => { 
-      Swal.fire('Oops...', 'Something went wrong!', 'error');
-
+      Swal.fire('):!אופס..., משהו השתבש');
     }))
   }
+  // onSelectFile(event) {
+  //   // called each time file input changes
+  //   if (event.target.files && event.target.files[0]) {
+
+  //     this.imagesFiles = event.target.files[0];
+
+  //   }
+  // }
+  // upload() {
+  //   this.userSrevice.uploadImage(this.imagesFiles, this.Signemail.value).subscribe(x => { });
+  // }
 }

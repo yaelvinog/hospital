@@ -8,6 +8,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [],
@@ -20,8 +25,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatCardModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatListModule,
+    MatRadioModule
+    
+
   ],
-  exports:[MatButtonModule,MatFormFieldModule,MatSelectModule,MatInputModule,MatIconModule,MatCardModule,MatTabsModule,MatToolbarModule]
+  exports:[MatButtonModule,MatFormFieldModule,MatSelectModule,MatInputModule,MatIconModule,MatCardModule,MatTabsModule,MatToolbarModule,MatCheckboxModule,MatRadioModule]
 })
 export class MaterialModule { }

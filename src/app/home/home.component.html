@@ -1,22 +1,40 @@
-<div class="card col-3" *ngFor="let item of arr">
-  
+<div><mat-icon class="icon-search" (click)="search=!search">search</mat-icon></div>
+<div class="div-search-wrapper">
+<div  class="search" *ngIf="search">
+  <input matInput type="text" (input)="getVal($event)" >
+</div>
+</div>
+<p class="filter-txt"><mat-icon (click)="isFilter=!isFilter">keyboard_backspace</mat-icon>מיין לפי</p>
+<div class="div-filter" *ngIf="isFilter">
+<!-- <input #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control-map">  -->
+<mat-radio-group aria-label="Select an option" [(ngModel)]="radioSelected">
+  <mat-radio-button value="sortLetter" >'מיין לפי א'ב</mat-radio-button>
+  <mat-radio-button value="sortAvg" >מיין לפי ממוצע </mat-radio-button>
+</mat-radio-group>
+<button mat-flat-button class="btn-filter"  (click)="filteringOk()">מיין</button>
+</div>
+<div class="card col-3" *ngFor="let item of HospitalsArr | paginate: { itemsPerPage: 4, currentPage: p };">
       <div class="div-header-wrapper">
           <p><strong>{{item.HospitalName}} </strong><mat-icon>location_city</mat-icon></p>
           <p>{{item.HospitalAddress}} <mat-icon>location_on</mat-icon></p>
           <p>{{item.Tel}} <mat-icon>call</mat-icon></p>
+          <p><strong>{{ratingLevelsFunc(item.TotalRatingAvg)}}</strong></p> 
+          <p class="avg-rating"><strong class="rating-avg-num">{{item.TotalRatingAvg}}</strong><app-star-rating  [rating]="item.TotalRatingAvg"  [starCount]="starCount" [color]="starColor"(ratingUpdated)="item.TotalRatingAvg=$event;"[isDisabled]="true"  ></app-star-rating></p>
+          <p class="duration"><strong>{{item.Duration| number:'1.0-0'}}</strong></p>
+          <span>'דק</span><mat-icon class="icon-drive">drive_eta</mat-icon>
       </div>
       <div>
-        <div class="card-block">  </div>
-        <div class="rating-wrapper">
-         <p class="rating">XXXX<app-star-rating [rating]="item.Rating1GeneralSatisfaction"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="item.Rating1GeneralSatisfaction=$event;"></app-star-rating></p>
-         <!-- <p class="p_rating">fgr</p> -->
-         <p class="rating"><app-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></app-star-rating></p>
-         <p class="rating"><app-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></app-star-rating></p>
-         <p class="rating"><app-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></app-star-rating></p>
-        </div>
+        <div class="card-block"></div>
       </div>
-      <a routerLink="/footer">Read More</a>
-   
+      <div class="left_right" routerLink="/footer/{{item.HospitalId}}">
+        <mat-icon  class="mat-icon-left">arrow_left</mat-icon><mat-icon class="mat-icon-left">arrow_left</mat-icon></div>
+  </div>
+  
+  <!-- Pagination -->
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <pagination-controls class="custom-pagination" (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
 
 

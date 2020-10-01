@@ -4,16 +4,16 @@
     <ng-container *ngFor="let slide of slides; let i = index">
       <img 
        *ngIf="i === currentSlide"
-        [src]="slide.src"
+        [src]="slide"
         class="slide"
       />
     </ng-container>
   
     <!-- controls -->
-    <button class="control prev" (click)="onPreviousClick()">
+    <button *ngIf="slides && slides.length>1" class="control prev" (click)="onPreviousClick()">
       <span class="arrow left"></span>
     </button>
-    <button class="control next" (click)="onNextClick()">
+    <button *ngIf="slides && slides.length>1" class="control next" (click)="onNextClick()">
       <span class="arrow right"></span>
     </button>
   </div>

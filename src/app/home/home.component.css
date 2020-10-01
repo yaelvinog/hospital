@@ -4,63 +4,166 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 50%;
+    height: 100%;
     position: absolute;
     margin: 0;
     border: none;
     box-shadow: none;
-  
     background-color: rgba(255,255,255,0.6);
     z-index: 1;
 }
 
 div p{
     text-align: center;
-    font-size: 1.15em;
+    font-size: 1.08em;
     line-height: 25px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-decoration: none;
     color: #645252;
     margin: 0px;
-}
-mat-icon, .mat-icon{
-    color: #b73232;
+    /* font-family:'my_font'; */
+    /* font-family: inherit; */
 }
 .card {
     position: relative;
     font-size: 1em;
     overflow: hidden;
     margin: 3%;
+    left:0;
     width: 19%;
-    height: 70vh;
+    height: 17vw;
     border: none;
     border-radius: .28571429rem;
-    box-shadow: 0 1px 3px 0 #e72f22, 0 0 0 1px;
-    /* margin-left: 4vw; */
-    margin-top: 10vw;
-    /* margin-right: 4vw; */
+    box-shadow: 0 1px 3px 0 #b73232, 0 0 0 1px;
+    margin-top:13.5vw;
     display: inline-block;
+    transition: all .1s ease-in;
+    /* z-index:1111; */
 }
-p.rating{
-    margin:-18px;
-    margin-left:7vw;
-}
-.p_rating{
-
-}
-.rating-wrapper{
-    
-        position: absolute;
-        top: 50%;
-        right: 0;
-        height: 50%;
-        width: 100%;
-}
-.rating-wrapper p{
-    direction: rtl;
+.card:hover{
+    top:-2px;
+    box-shadow:1px 1px 1px 1px #645252 ;
+    /* box-shadow: 0 1px 3px 0  #645252, 0 0 0 1px; */
 }
 .div-header-wrapper{
     z-index: 1111;
     position: relative;
     padding-top: 20px;
+}
+.left_right{
+    position: relative;
+    top:0vw;
+    display: inline-block;
+    z-index:1;
+}
+.right{
+    position: relative;
+    left:-1vw;
+}
+.mat-icon-left{
+    margin-right: -15px;
+    outline:none !important;
+    font-size:35px;
+}
+.mat-icon-left:focus,
+.mat-icon-left:hover,
+.left_right{
+    outline:none !important;
+    cursor: pointer;
+}
+.avg-rating{
+    position:relative;
+    top:-0.8vw;
+    direction: rtl;
+}
+.rating-avg-num{
+    font-size:1.9em;
+}
+.w3-padding-32 {
+    padding-top: 32px!important;
+    padding-bottom: 32px!important;
+    margin-top:2.56vw;
+}
+.w3-center {
+    text-align: center!important;
+}
+.w3-center .w3-bar {
+    display: inline-block;
+    width: auto;
+}
+.w3-bar .w3-button {
+    white-space: normal;
+}
+.w3-bar .w3-bar-item {
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    text-decoration: none;
+    color: black;
+}
+.custom-pagination /deep/ .ngx-pagination .current {background: #b73232;}
+.duration{
+    position: relative;
+    top:0.75vw;
+    right:-7.5vw;
+}
+.duration strong{
+    font-weight:800;
+    font-size:1.3em;
+}
+.div-header-wrapper span{
+    position: absolute;
+    right: 1.5vw;
+    font-size:0.75em;
+}
+.icon-drive{
+    position: absolute;
+    right: 1.9vw;
+    font-size:1vw;
+}
+.div-filter{
+    position: absolute;
+    top: 8vw;
+    left:70vw;
+}
+.filter-txt{
+    position: absolute;
+    top:7vw;
+    right:0;
+    color:#645252 ;
+    cursor: pointer;
+}
+.btn-filter{
+    position: absolute;
+    left: -8vw;
+    top: -0.5vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+    border: 2px solid #d9d9d9;
+    box-shadow: 0px 0px 2px 2px #b73232;
+    font-size: 1.2em;
+    background: #726262;
+}
+.icon-search{
+    font-size: 40px;
+    top: 1vw;
+    left: 54vw;
+    position: absolute;
+    z-index: 11111;
+    cursor: pointer;
+}
+.search{
+    position: absolute;
+    top: 1.5vw;
+    transition: .3s ease;
+    overflow: hidden;
+    left:35vw;
+    z-index: 11111;
+}
+.mat-flat-button{
+    min-width: 50px;
+    line-height: 26px;
 }

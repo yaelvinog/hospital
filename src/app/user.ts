@@ -1,5 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
-import { getLocaleDateFormat } from '@angular/common';
 
 export class User {
     UserId:number;
@@ -12,9 +10,9 @@ export class User {
     IsDisabled:boolean;
     IsAdmin:boolean;
     
-    constructor(UserName?:string,Email?:string,UserPassword?:string,UserImage?:string,CreateDate?:Date,Summary?:string,IsDisabled?:boolean,IsAdmin?:boolean){
-     
-        this.UserName=UserName;
+    constructor(UserName?:string,Email?:string,UserPassword?:string,UserImage?:string,CreateDate?:Date,Summary?:string,IsDisabled?:boolean,IsAdmin?:boolean)
+    {
+       this.UserName=UserName;
        this.Email=Email;
        this.UserPassword=UserPassword;
        this.UserImage=UserImage;

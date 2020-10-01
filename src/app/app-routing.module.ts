@@ -6,15 +6,17 @@ import { HomeComponent } from './home/home.component';
 import { OpinionComponent } from './opinion/opinion.component';
 import { LoginGuardService } from './login-guard.service';
 import { FooterComponent } from './footer/footer.component';
+import { DepartmentDetailsCardComponent } from './department-details-card/department-details-card.component';
 
 
 
 
 const routes: Routes = [
 {
-  path:"",
+  path:"home",
    component:HomeComponent
 },
+{ path: '', pathMatch: 'full', redirectTo: '/home' },
 {
   path:'signUp',
   component:SignUpComponent
@@ -28,11 +30,14 @@ const routes: Routes = [
   component:OpinionComponent
 },
 {
-  path:'footer',
+  path:'footer/:id',
   component:FooterComponent
+},
+{
+  path:'department/:id',
+  component:DepartmentDetailsCardComponent
 }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

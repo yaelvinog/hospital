@@ -1,0 +1,117 @@
+<mat-card class="dep-card">
+  <mat-card-header>
+    <mat-card-title class="div-title"><p>{{departmentObj.FullName}}</p></mat-card-title>
+    <mat-card-subtitle>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="div-wrapper-img">
+   <div class="department-manager">
+       <img  src="../../assets/images/round_perm_identity_white_18dp.png">
+   </div>
+   <div class="department-phones">
+       <img src="../../assets/images/round_call_white_18dp.png">
+   </div>
+   <div class="department-vising-hours">
+       <img src="../../assets/images/baseline_pending_actions_white_18dp.png">
+   </div>
+    </div>
+    <div class="dep-details">
+    <span><b>זמני בקור</b></span>
+    <span><b>מודיעין</b> </span>
+    <span><b>מנהל מחלקה</b></span>
+    </div>
+    <!-- <div class="rating-wrapper">
+        <p class="rating_text">
+          <app-star-rating [rating]="HospitalObj.Rating1GeneralSatisfactionAvg" [starCount]="starCount"
+            [color]="starColor" [isDisabled]="true" (ratingUpdated)="HospitalObj.Rating1GeneralSatisfactionAvg=$event;"></app-star-rating>
+          <span>שביעות רצון כללית</span>
+        </p>
+        <p class="rating_text">
+          <app-star-rating [rating]="HospitalObj.Rating2ListenAndRelateAvg" [starCount]="starCount" [color]="starColor"
+            (ratingUpdated)="HospitalObj.Rating2ListenAndRelateAvg=$event;" [isDisabled]="true" ></app-star-rating><span>יחס וכבוד
+            למטופל</span>
+        </p>
+        <p class="rating_text">
+          <app-star-rating [rating]="HospitalObj.Rating3GettingHelpEasilyAvg" [starCount]="starCount"
+            [color]="starColor" (ratingUpdated)="HospitalObj.Rating3GettingHelpEasilyAvg=$event;" [isDisabled]="true" ></app-star-rating>
+          <span>מתן מידע ובהירות</span>
+        </p>
+        <p class="rating_text">
+          <app-star-rating [rating]="HospitalObj.Rating4SharingInformationAvg" [starCount]="starCount"
+            [color]="starColor" (ratingUpdated)="HospitalObj.Rating4SharingInformationAvg=$event;" [isDisabled]="true" ></app-star-rating>
+          <span>העצמת המטופל</span>
+        </p>
+        <p class="rating_text">
+          <app-star-rating [rating]="HospitalObj.Rating5AnEfficientProcessAvg" [starCount]="starCount"
+            [color]="starColor" (ratingUpdated)="HospitalObj.Rating5AnEfficientProcessAvg=$event;" [isDisabled]="true" ></app-star-rating>
+          <span> יעילות</span>
+        </p>
+        <p class="rating_text">
+          <app-star-rating [rating]="HospitalObj.Rating6ConditionsOfHospitalizationAvg" [starCount]="starCount"
+            [color]="starColor" (ratingUpdated)="HospitalObj.Rating6ConditionsOfHospitalizationAvg=$event;" [isDisabled]="true" >
+          </app-star-rating><span>תנאי אשפוז</span>
+        </p>
+        <p class="rating_text">
+          <app-star-rating [rating]="HospitalObj.Rating7PreventionOfMedicalErrorsAvg" [starCount]="starCount"
+            [color]="starColor" (ratingUpdated)="HospitalObj.Rating7PreventionOfMedicalErrorsAvg=$event;" [isDisabled]="true" >
+          </app-star-rating> <span>בטיחות המטופל</span>
+        </p>
+      </div> -->
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-card class="mat-card-opinion">
+      <mat-icon class="icon-forum">forum</mat-icon>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title id="mat-card" >המשתמש עינת כתב את חוות דעת</mat-card-title>
+      <mat-card-subtitle id="mat-card">אפריל 2019</mat-card-subtitle>
+      <mat-card-content>
+          <strong>מחלקה מקצועית ואנושית</strong>
+          <p *ngIf="open" class="comment_more_ratings">הצוות שם מקצועי במיוחד ובנוסף גם אנושיים, דיברו איתנו בגובה העיניים, הסבירו כל מה ששאלנו ואף מה שלא שאלנו, רצו לדעת את חוות דעתנו לגבי ההחלטות שהם קיבלו ובאופן כללי נתנו תחושה שאנחנו והם שותפים לאותה מטרה – לעשות הכי טוב ליקירנו. </p>
+          <div class="div-open-wrapping"><a href="javascript:void(0)" (click)="open=!open" ><span><</span>{{text()}}</a></div>
+      </mat-card-content>
+      <mat-card-actions></mat-card-actions>
+      <mat-card-footer></mat-card-footer>
+    </mat-card>
+    <mat-card class="mat-card-opinion">
+      <mat-icon class="icon-forum">forum</mat-icon>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title id="mat-card" >המשתמש עינת כתב את חוות דעת</mat-card-title>
+      <mat-card-subtitle id="mat-card">אפריל 2019</mat-card-subtitle>
+      <mat-card-content>
+          <strong>מחלקה מקצועית ואנושית</strong>
+          <p *ngIf="open" class="comment_more_ratings">הצוות שם מקצועי במיוחד ובנוסף גם אנושיים, דיברו איתנו בגובה העיניים, הסבירו כל מה ששאלנו ואף מה שלא שאלנו, רצו לדעת את חוות דעתנו לגבי ההחלטות שהם קיבלו ובאופן כללי נתנו תחושה שאנחנו והם שותפים לאותה מטרה – לעשות הכי טוב ליקירנו. </p>
+          <div class="div-open-wrapping"><a href="javascript:void(0)" (click)="open=!open" ><span><</span>{{text()}}</a></div>
+      </mat-card-content>
+      <mat-card-actions></mat-card-actions>
+      <mat-card-footer></mat-card-footer>
+    </mat-card>
+    <mat-card class="mat-card-opinion">
+      <mat-icon class="icon-forum">forum</mat-icon>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title id="mat-card" >המשתמש עינת כתב את חוות דעת</mat-card-title>
+      <mat-card-subtitle id="mat-card">אפריל 2019</mat-card-subtitle>
+      <mat-card-content>
+          <strong>מחלקה מקצועית ואנושית</strong>
+          <p *ngIf="open" class="comment_more_ratings">הצוות שם מקצועי במיוחד ובנוסף גם אנושיים, דיברו איתנו בגובה העיניים, הסבירו כל מה ששאלנו ואף מה שלא שאלנו, רצו לדעת את חוות דעתנו לגבי ההחלטות שהם קיבלו ובאופן כללי נתנו תחושה שאנחנו והם שותפים לאותה מטרה – לעשות הכי טוב ליקירנו. </p>
+          <div class="div-open-wrapping"><a href="javascript:void(0)" (click)="open=!open" ><span><</span>{{text()}}</a></div>
+      </mat-card-content>
+      <mat-card-actions></mat-card-actions>
+      <mat-card-footer></mat-card-footer>
+    </mat-card>
+    <mat-card class="mat-card-opinion">
+      <mat-icon class="icon-forum">forum</mat-icon>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title id="mat-card" >המשתמש עינת כתב את חוות דעת</mat-card-title>
+      <mat-card-subtitle id="mat-card">אפריל 2019</mat-card-subtitle>
+      <mat-card-content>
+          <strong>מחלקה מקצועית ואנושית</strong>
+          <p *ngIf="open" class="comment_more_ratings">הצוות שם מקצועי במיוחד ובנוסף גם אנושיים, דיברו איתנו בגובה העיניים, הסבירו כל מה ששאלנו ואף מה שלא שאלנו, רצו לדעת את חוות דעתנו לגבי ההחלטות שהם קיבלו ובאופן כללי נתנו תחושה שאנחנו והם שותפים לאותה מטרה – לעשות הכי טוב ליקירנו. </p>
+          <div class="div-open-wrapping"><a href="javascript:void(0)" (click)="open=!open" ><span><</span>{{text()}}</a></div>
+      </mat-card-content>
+      <mat-card-actions></mat-card-actions>
+      <mat-card-footer></mat-card-footer>
+    </mat-card>
+  </mat-card-footer>
+</mat-card>
+

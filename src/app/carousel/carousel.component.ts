@@ -6,12 +6,22 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  @Input() slides;
+  @Input() slides: any[];
+  // @Input() get slides(value: string | any[]) {
+  //   if (typeof value == 'string') {
+  //     this._slides = JSON.parse(value)
+  //   } else {
+  //     this._slides = value
+  //   }
+  // }
+
+
   currentSlide=0;
   constructor() { }
   
 
   ngOnInit(): void {
+    const s =this.slides;
   }
   onPreviousClick() {
     const previous = this.currentSlide - 1;
