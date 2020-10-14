@@ -9,8 +9,7 @@ export class Department {
     DepartmentManagerName:string;
     IsConfirmed:boolean;
     IsDeleted:boolean;
-    VisitTimeStart:Time;
-    VisitTimeEnd:Time;
+    VisitTime:string;
     DepImage:string;
     Tel:string;
     Summary:string;
@@ -23,8 +22,7 @@ export class Department {
         DepartmentManagerName?:string,
         IsConfirmed?:boolean,
         IsDeleted?:boolean,
-        VisitTimeStart?:Time,
-        VisitTimeEnd?:Time,
+        VisitTime?:string,
         DepImage?:string,
         Tel?:string,
         Summary?:string
@@ -38,8 +36,7 @@ export class Department {
         this.DepartmentManagerName=DepartmentManagerName,
         this.IsConfirmed=IsConfirmed;
         this.IsDeleted=IsDeleted;
-        this.VisitTimeStart=VisitTimeStart;
-        this.VisitTimeEnd=VisitTimeEnd;
+        this.VisitTime=VisitTime;
         this.DepImage=DepImage;
         this.Tel=Tel;
         this.Summary=Summary;

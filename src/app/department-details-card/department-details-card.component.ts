@@ -17,7 +17,8 @@ export class DepartmentDetailsCardComponent implements OnInit {
   ngOnInit(): void {
     this.ActivatedRoute.paramMap.subscribe(res=>{
       if(Number(res.get("id"))){
-        this.DepartmentService.getDepartmentbyId(Number(res.get("id"))).subscribe(response=>{
+        alert("dfd");
+          this.DepartmentService.getDepartmentbyId(Number(res.get("id"))).subscribe(response=>{
           this.departmentObj=<Department>response;
         });
       }

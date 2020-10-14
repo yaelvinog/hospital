@@ -1,17 +1,23 @@
-<div><mat-icon class="icon-search" (click)="search=!search">search</mat-icon></div>
-<div class="div-search-wrapper">
-<div  class="search" *ngIf="search">
+<!-- <div  class="search">
   <input matInput type="text" (input)="getVal($event)" >
+ 
+</div> -->
+<div class="big-round">
+  <div class="small-round" (click)="isFilter=!isFilter">
+    <p class="filter-txt">מיין לפי</p>
+    <mat-icon class="icon-filter">keyboard_backspace</mat-icon>
+  </div>
 </div>
-</div>
-<p class="filter-txt"><mat-icon (click)="isFilter=!isFilter">keyboard_backspace</mat-icon>מיין לפי</p>
 <div class="div-filter" *ngIf="isFilter">
-<!-- <input #search autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control-map">  -->
 <mat-radio-group aria-label="Select an option" [(ngModel)]="radioSelected">
   <mat-radio-button value="sortLetter" >'מיין לפי א'ב</mat-radio-button>
   <mat-radio-button value="sortAvg" >מיין לפי ממוצע </mat-radio-button>
 </mat-radio-group>
 <button mat-flat-button class="btn-filter"  (click)="filteringOk()">מיין</button>
+</div>
+<div class="search">
+  <input #search autocorrect="on" autocapitalize="off" spellcheck="off" type="text" > 
+  <mat-icon class="icon-search" >search</mat-icon>
 </div>
 <div class="card col-3" *ngFor="let item of HospitalsArr | paginate: { itemsPerPage: 4, currentPage: p };">
       <div class="div-header-wrapper">

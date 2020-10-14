@@ -9,7 +9,6 @@ import { Department } from '../department';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
-
 })
 export class FooterComponent implements OnInit {
   public images = [];
@@ -27,7 +26,7 @@ export class FooterComponent implements OnInit {
   imagesMultiFiles: File[];
   constructor(public HospitalService: DBService, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(res => {
-      if (Number(res.get("id")))
+      if (Number(res.get("id"))){
         this.HospitalService.GetHospitalById(Number(res.get("id"))).subscribe(res => {
           this.HospitalObj = res;
           if (this.HospitalObj.HosImage) {
@@ -42,6 +41,7 @@ export class FooterComponent implements OnInit {
           })
         }
         );
+      }
     });
   }
 

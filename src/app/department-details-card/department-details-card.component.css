@@ -21,6 +21,15 @@
     border: 4px solid white;
   
 }
+/* .department-manager{
+  background-repeat: no-repeat;
+ 
+  background-position:center;  
+  background-size: 60px;
+
+  
+  
+} */
 .department-manager,
 .department-phones,
 .department-vising-hours {
@@ -28,12 +37,14 @@
     width: 6vw;
     height: 5.5vw;
     background-color: #b73232;
+    background-position:left bottom;
     margin:50px;
     margin-left:12vw;
-
+    /* transition: 0.2s all; */
 } 
+
 .dep-details{
-    position: absolute;;
+    position: absolute;
 }
 .dep-details span{
    position: relative;
@@ -41,6 +52,7 @@
    margin:9vw;
    left:-2.5vw;
 }
+
 mat-card-title,
   mat-card-subtitle,
   mat-card-header{
@@ -73,7 +85,7 @@ mat-card-title,
       left:1vw;
   }
   .example-header-image {
-    background-image: url(https://material.angular.io/assets/img/examples/shiba1.jpg);
+    background-image: url(..//../assets/images/userProfil.png);
     background-size: cover;
     width: 4vw;
     height: 4vw;

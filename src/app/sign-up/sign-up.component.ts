@@ -43,13 +43,12 @@ export class SignUpComponent implements OnInit {
     this.userSrevice.addUser(user).subscribe(response => {
       if (response){
       Swal.fire(
-        '(:הנתונים נשמרו בהצלחה.'
+        'Success','נרשמת בהצלחה!','success'
       );
-      localStorage.setItem('user',JSON.stringify(user));
-      this.router.navigateByUrl("opinion");
+      localStorage.setItem('user',JSON.stringify(response));
     }
     }, (err => { 
-      Swal.fire('):!אופס..., משהו השתבש');
+      Swal.fire('Error','):!אופס..., משהו השתבש','error');
     }))
   }
   // onSelectFile(event) {

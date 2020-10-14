@@ -30,15 +30,13 @@ export class LoginComponent implements OnInit {
     this.ServiceUser.getUsers(this.email.value,this.password.value).subscribe(user=>{
       if(!user)
         Swal.fire(
-          "שם המשתמש והסיסמה לא זוהו"
+          'Warning','שם משתשמש והסיסמא לא זוהו','warning'
         );
     else
         localStorage.setItem('user',JSON.stringify(user));
-        this.router.navigateByUrl("opinion");
 
 },(err=>{
-  Swal.fire(
-'): !אופס..., משהו השתבש');
+  Swal.fire('Error','): !אופס..., משהו השתבש','error');
 }));
 }
 forgotPasswd():void{

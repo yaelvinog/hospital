@@ -15,7 +15,7 @@ declare const google:any
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('search', {static: false}) searchElementRef: ElementRef;
-  search:boolean=false;
+  search1:boolean=false;
   HospitalsArr:Hospital[] =[];
   HospitalArrAll:Hospital[]=[];
   arr2:Department[];
@@ -41,14 +41,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
      case (TotalRatingAvg>=4.5&&TotalRatingAvg<=5):
               return "מצוין";
       default:
-        return "אין ";
+        return " ";
     }
   }
   calculateDistancesHospitals(hospitals: Hospital[]): void {
       this.mapsAPILoader.load().then(() => { this.calculateDistances(this.SourceAddress,hospitals);});
   }
+  //The function receives a source address as well as an array of hospitals
   calculateDistances(sourceAddress: string,hospitals: Hospital[])
     {
+      //Defining a self-variable so that we can access variables outside the function
       let self =this;
       var service = new google.maps.DistanceMatrixService();
       var request =    {
@@ -58,7 +60,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
         unitSystem: google.maps.UnitSystem.METRIC,
         avoidHighways: false,
         avoidTolls: false
-    };
+      };
+    //A loop that passes through the array of hospitals and inserts in each iteration the address of the current hospital into the array of destinations
     for (var i=0; i<hospitals.length; i++) {
       request.destinations.push(hospitals[i].HospitalAddress);
     }
@@ -73,7 +76,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
            results[i].hospital = hospitals[i];
            results[i].hospital.Duration =  results[i].duration.value / 60;
         }
-        results.sort(self.sortByDistDM);
+        //Sort the array by duration from the source address
+       results.sort(self.sortByDistDM);
        self.HospitalsArr=results.map(x=>x.hospital);
        self.HospitalArrAll=self.HospitalsArr;
       
@@ -82,11 +86,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
   //ממינת את התוצאה שחזרה
    sortByDistDM(a,b) {
-     return (a.duration.value- b.duration.value)
+     return (a.duration.value- b.duration)
   }
   ngOnInit(): void {
    this.getHospitalAll();
- 
   }
   ngAfterViewInit(){
     this.findAdress();
@@ -101,10 +104,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
          autocomplete.addListener("place_changed", () => {
            this.ngZone.run(() => {
              // some details
-             let place = autocomplete.getPlace();
-            alert( place.formatted_address);
-            alert(place.name);
-            alert(place.geometry.location.lat()+',' + place.geometry.location.lng());
+            let place = autocomplete.getPlace();
+            // alert( place.formatted_address);
+            // alert(place.name);
+            // alert(place.geometry.location.lat()+',' + place.geometry.location.lng());
            });
          });
        });
@@ -167,5 +170,6 @@ getVal(value){
       this.HospitalsArr=this.HospitalArrAll;
     }
 }
+
 }
 

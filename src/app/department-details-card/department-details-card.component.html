@@ -1,3 +1,17 @@
+
+<!-- <script type="text/javascript">
+  jQuery(document).ready(function () {
+      $('.option_box').mouseover(function () {
+          $(this).css('backgroundPosition', 'right bottom');
+          $(this).css('backgroundColor', $(this).find('.colorPicker').text());
+      })
+
+      $('.option_box').mouseout(function () {
+          $(this).css('backgroundPosition', 'left bottom');
+          $(this).css('backgroundColor', "white");
+      })        
+  }); -->
+<!-- </script> -->
 <mat-card class="dep-card">
   <mat-card-header>
     <mat-card-title class="div-title"><p>{{departmentObj.FullName}}</p></mat-card-title>
@@ -7,19 +21,24 @@
   <mat-card-content>
     <div class="div-wrapper-img">
    <div class="department-manager">
-       <img  src="../../assets/images/round_perm_identity_white_18dp.png">
+       <img  src="../../assets/images/round_perm_identity_white_18dp.png"> 
    </div>
    <div class="department-phones">
        <img src="../../assets/images/round_call_white_18dp.png">
+      
    </div>
    <div class="department-vising-hours">
        <img src="../../assets/images/baseline_pending_actions_white_18dp.png">
+       
    </div>
     </div>
     <div class="dep-details">
     <span><b>זמני בקור</b></span>
     <span><b>מודיעין</b> </span>
     <span><b>מנהל מחלקה</b></span>
+    <p>{{departmentObj.VisitTime}}</p>
+    <p>{{departmentObj.Tel}}</p>
+    <p>{{departmentObj.DepartmentManagerName}}</p>
     </div>
     <!-- <div class="rating-wrapper">
         <p class="rating_text">

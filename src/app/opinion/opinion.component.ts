@@ -44,12 +44,15 @@ export class OpinionComponent implements OnInit {
     if(this.checked==true){
       this.OpinionService.AddNewOpinion(this.newOpinion).subscribe(res=>{
           if(res!=null){
-            Swal.fire('חוות דעתך נקלטה בהצלחה!');
+            Swal.fire('Success','חוות דעתך נקלטה בהצלחה!','success')
+            .then(()=>{
+              this.router.navigateByUrl("footer/"+this.selectedHospital);
+            });
           }  
       },(err=>
-        {Swal.fire('): !אופס..., משהו השתבש')}));
+        {Swal.fire('Error','): !אופס..., משהו השתבש','error')}));
     }
-    this.router.navigateByUrl("home");
+  //  this.router.navigateByUrl("home");
 }
   ngOnInit(): void {
   }
