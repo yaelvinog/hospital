@@ -4,6 +4,11 @@ import { Hospital } from '../hospital';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Department } from '../department';
+import { Opinion } from '../opinion';
+import { OpinionService } from '../opinion.service';
+import { User } from '../user';
+import { UsersService } from '../users.service';
+
 
 @Component({
   selector: 'app-footer',
@@ -19,12 +24,15 @@ export class FooterComponent implements OnInit {
   starColor:string="primary";
   starCount:number=5;
   rating:number=1;
-  open:boolean=false;
+  openId:number=null;
   //HosImage = "hos1212121.jpg, hos2243243.jpg"
   HospitalObj: Hospital = new Hospital();
   DepartmentArr:Department[]=[];
+  OpinionArr:Opinion[]=[];
+  userArr:User[]=[];
   imagesMultiFiles: File[];
-  constructor(public HospitalService: DBService, private route: ActivatedRoute) {
+  user:User;
+  constructor(public HospitalService: DBService, private route: ActivatedRoute,private OpinionService:OpinionService,private userService:UsersService) {
     this.route.paramMap.subscribe(res => {
       if (Number(res.get("id"))){
         this.HospitalService.GetHospitalById(Number(res.get("id"))).subscribe(res => {
@@ -39,6 +47,9 @@ export class FooterComponent implements OnInit {
           this.HospitalService.getDeprtmentbyHospitalId(this.HospitalObj.HospitalId).subscribe(response=>{
             this.DepartmentArr=<Department[]>response;
           })
+          this.OpinionService.getAllOpinionByHospital(this.HospitalObj.HospitalId).subscribe(ress=>{
+              this.OpinionArr=ress;
+          });
         }
         );
       }
@@ -101,7 +112,13 @@ export class FooterComponent implements OnInit {
     this.counter = this.counter+1;
   }
   }
-  text():string{
-    return this.open?"הסתר":"קרא עוד";
+  text(id:number):string{
+    return (this.openId ==null || this.openId!=id)?"קרא עוד":"הסתר";
+    }
+    openFunc(id:number){
+      if(this.openId==null||this.openId!=id)
+        this.openId=id;
+      else
+        this.openId=null;
     }
 }

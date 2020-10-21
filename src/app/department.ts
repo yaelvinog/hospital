@@ -13,6 +13,13 @@ export class Department {
     DepImage:string;
     Tel:string;
     Summary:string;
+    Rating1GeneralSatisfactionAvg:number;
+    Rating2ListenAndRelateAvg:number;
+    Rating3GettingHelpEasilyAvg:number;
+    Rating4SharingInformationAvg:number;
+    Rating5AnEfficientProcessAvg:number;
+    Rating6ConditionsOfHospitalizationAvg:number;
+    Rating7PreventionOfMedicalErrorsAvg:number;
     constructor(
         DepartmentId?:number,
         HospitalId?:number,
@@ -25,8 +32,15 @@ export class Department {
         VisitTime?:string,
         DepImage?:string,
         Tel?:string,
-        Summary?:string
-    )
+        Summary?:string,
+        Rating1GeneralSatisfactionAvg?:number,
+        Rating2ListenAndRelateAvg?:number,
+        Rating3GettingHelpEasilyAvg?:number,
+        Rating4SharingInformationAvg?:number,
+        Rating5AnEfficientProcessAvg?:number,
+        Rating6ConditionsOfHospitalizationAvg?:number,
+        Rating7PreventionOfMedicalErrorsAvg?:number,
+        )
     {
         this.DepartmentId=DepartmentId;
         this.HospitalId=HospitalId;
@@ -40,5 +54,12 @@ export class Department {
         this.DepImage=DepImage;
         this.Tel=Tel;
         this.Summary=Summary;
+        this.Rating1GeneralSatisfactionAvg=Rating1GeneralSatisfactionAvg;
+        this.Rating2ListenAndRelateAvg=Rating2ListenAndRelateAvg;
+        this.Rating3GettingHelpEasilyAvg=Rating3GettingHelpEasilyAvg;
+        this.Rating4SharingInformationAvg=Rating4SharingInformationAvg;
+        this.Rating5AnEfficientProcessAvg=Rating5AnEfficientProcessAvg;
+        this.Rating6ConditionsOfHospitalizationAvg=Rating6ConditionsOfHospitalizationAvg;
+        this.Rating7PreventionOfMedicalErrorsAvg=Rating7PreventionOfMedicalErrorsAvg;
     }
 }

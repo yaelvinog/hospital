@@ -12,6 +12,7 @@ export class User {
     
     constructor(UserName?:string,Email?:string,UserPassword?:string,UserImage?:string,CreateDate?:Date,Summary?:string,IsDisabled?:boolean,IsAdmin?:boolean)
     {
+        
        this.UserName=UserName;
        this.Email=Email;
        this.UserPassword=UserPassword;

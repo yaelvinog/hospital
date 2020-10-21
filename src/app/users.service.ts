@@ -12,7 +12,10 @@ export class UsersService {
   constructor(private http:HttpClient) {
     
   }
-  getUsers(email:string,password:string):Observable<User>{
+  getAllUsers():Observable<any>{
+    return this.http.get<any>('http://localhost:60876/api/Users/GetUsers')
+  }
+  getUser(email:string,password:string):Observable<User>{
      return this.http.get<User>(`http://localhost:60876/api/Users/GetUser/${email}/${password}`);
   }
   addUser(user:User):Observable<User>{

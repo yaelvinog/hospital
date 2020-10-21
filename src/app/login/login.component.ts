@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     return this.LoginForm.get("password");
   }
   submitForm():void{
-    this.ServiceUser.getUsers(this.email.value,this.password.value).subscribe(user=>{
+    this.ServiceUser.getUser(this.email.value,this.password.value).subscribe(user=>{
       if(!user)
         Swal.fire(
           'Warning','שם משתשמש והסיסמא לא זוהו','warning'

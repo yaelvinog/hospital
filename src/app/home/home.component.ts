@@ -6,6 +6,7 @@ import { MapsAPILoader } from '@agm/core';
 import { TagContentType } from '@angular/compiler';
 import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
 import { StringDecoder } from 'string_decoder';
+import { OpinionService } from '../opinion.service';
 
 declare const google:any
 @Component({
@@ -26,6 +27,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   p: number = 1;
   map: any;
   radioSelected:string;
+  HospitalsArray:Hospital[]=[];
+  isSpiner:boolean=false;
   SourceAddress = "סמינר מאיר, בני ברק";
   constructor(private HospitalService:DBService, private mapsAPILoader:MapsAPILoader, private ngZone:NgZone){ }
   ratingLevelsFunc(TotalRatingAvg):string{
@@ -45,6 +48,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
   }
   calculateDistancesHospitals(hospitals: Hospital[]): void {
+
       this.mapsAPILoader.load().then(() => { this.calculateDistances(this.SourceAddress,hospitals);});
   }
   //The function receives a source address as well as an array of hospitals
@@ -80,61 +84,71 @@ export class HomeComponent implements OnInit, AfterViewInit {
        results.sort(self.sortByDistDM);
        self.HospitalsArr=results.map(x=>x.hospital);
        self.HospitalArrAll=self.HospitalsArr;
+       self.isSpiner=false;
       
       }
     });
   }
   //ממינת את התוצאה שחזרה
    sortByDistDM(a,b) {
-     return (a.duration.value- b.duration)
+     return (a.duration.value- b.duration.value)
   }
   ngOnInit(): void {
    this.getHospitalAll();
   }
   ngAfterViewInit(){
-    this.findAdress();
+    this.findAddress();
+   
   }
-  findAdress(){
+  findAddress(){
     if(!this.searchElementRef){
-        setTimeout (()=>{this.findAdress();},2000);   
+        setTimeout (()=>{this.findAddress();},2000); 
     }
     else{
     this.mapsAPILoader.load().then(() => {
+          //A variable that contains what is selected in Autocomplete
          let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
          autocomplete.addListener("place_changed", () => {
            this.ngZone.run(() => {
-             // some details
+            //A variable that contains some datails of the selected address
             let place = autocomplete.getPlace();
-            // alert( place.formatted_address);
-            // alert(place.name);
-            // alert(place.geometry.location.lat()+',' + place.geometry.location.lng());
+            //The source address contains the selected address
+            this.SourceAddress=place.formatted_address;
+            this.isSpiner=true;
+            this.calculateDistancesHospitals(this.HospitalsArray);
            });
          });
        });
    }
   }
   getHospitalAll()
-  {   
-    const lat = 32.090107;
-    const lon = 34.838988;
+  { 
+    this.isSpiner=true;
     this.HospitalService.GetAllData().subscribe(response=>{
-      this.calculateDistancesHospitals(<Hospital[]>response);
+      this.calculateDistancesHospitals(response);
+      this.HospitalsArray=response;
     });
-    if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(position => {
-        const lat = 32.090107;
-        const lon = 34.838988;
-        this.HospitalService.GetAllData().subscribe(response=>{
-        this.calculateDistancesHospitals(<Hospital[]>response);
-      });
-      });
-    }
-    else{
-      this.HospitalService.GetAllData().subscribe(response=>{
-        this.calculateDistancesHospitals(<Hospital[]>response);
+    // if (navigator.geolocation) {
+    //     navigator.geolocation.watchPosition(position => {
+    //     const lat = 32.090107;
+    //     const lon = 34.838988;
+    //     this.HospitalService.GetAllData().subscribe(response=>{
+    //     this.calculateDistancesHospitals(<Hospital[]>response);
+    //   });
+    //   });
+    // }
+    // else{
+    //   this.HospitalService.GetAllData().subscribe(response=>{
+    //     this.calculateDistancesHospitals(<Hospital[]>response);
         
-      });
-    }
+    //   });
+    // }
+ }
+ isfilter():void{
+   this.isFilter=!this.isFilter;
+   if(!this.isFilter)
+     this.getHospitalAll();
+
  }
 filteringOk():void
 {
@@ -157,19 +171,31 @@ filteringOk():void
   }
 }
 //Website search function
-getVal(value){
-  var val = value.target.value;
-  if (val && val.trim() != '') {
-    this.HospitalsArr=this.HospitalArrAll.filter((item)=>{
-      return(
-      String(item.HospitalName).toLowerCase().indexOf(val.toLowerCase()) > -1 ||
-      String (item.HospitalAddress).toLowerCase().indexOf(val.toLowerCase()) > -1);
-    }
-    )}
-    else{
-      this.HospitalsArr=this.HospitalArrAll;
-    }
+// getVal(value){
+//   var val = value.target.value;
+//   if (val && val.trim() != '') {
+//     this.HospitalsArr=this.HospitalArrAll.filter((item)=>{
+//       return(
+//       String(item.HospitalName).toLowerCase().indexOf(val.toLowerCase()) > -1 ||
+//       String (item.HospitalAddress).toLowerCase().indexOf(val.toLowerCase()) > -1);
+//     }
+//     )}
+//     else{
+//       this.HospitalsArr=this.HospitalArrAll;
+//     }
+// }
+valueChanged(e):void{
+  if(e.target.value.length==0)
+  {
+    this.isSpiner=true;
+    this.SourceAddress="סמינר מאיר, בני ברק";
+    this.calculateDistancesHospitals(this.HospitalsArray);
+  }
+  // if(!(this.searchElementRef.nativeElement))
+  // {
+  //   this.SourceAddress="סמינר מאיר, בני ברק";
+  //   this.getHospitalAll();
+  // }
 }
-
 }
 

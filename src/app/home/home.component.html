@@ -1,9 +1,6 @@
-<!-- <div  class="search">
-  <input matInput type="text" (input)="getVal($event)" >
- 
-</div> -->
+
 <div class="big-round">
-  <div class="small-round" (click)="isFilter=!isFilter">
+  <div class="small-round" (click)="isfilter()">
     <p class="filter-txt">מיין לפי</p>
     <mat-icon class="icon-filter">keyboard_backspace</mat-icon>
   </div>
@@ -16,8 +13,8 @@
 <button mat-flat-button class="btn-filter"  (click)="filteringOk()">מיין</button>
 </div>
 <div class="search">
-  <input #search autocorrect="on" autocapitalize="off" spellcheck="off" type="text" > 
-  <mat-icon class="icon-search" >search</mat-icon>
+  <input #search autocorrect="on" autocapitalize="off" spellcheck="off" type="text" id="inputSearch" (input)="valueChanged($event)"> 
+  <mat-icon class="icon-search">search</mat-icon>
 </div>
 <div class="card col-3" *ngFor="let item of HospitalsArr | paginate: { itemsPerPage: 4, currentPage: p };">
       <div class="div-header-wrapper">
@@ -35,7 +32,10 @@
       <div class="left_right" routerLink="/footer/{{item.HospitalId}}">
         <mat-icon  class="mat-icon-left">arrow_left</mat-icon><mat-icon class="mat-icon-left">arrow_left</mat-icon></div>
   </div>
-  
+<!-- spiner -->
+<div id="mydiv" *ngIf="isSpiner">
+  <img src="../../assets/images/new2.gif" class="ajax-loader"/>
+</div>
   <!-- Pagination -->
   <div class="w3-center w3-padding-32">
     <div class="w3-bar">

@@ -66,8 +66,10 @@ strong{
     left:0;
 }
 .div-open-wrapping a{
-    position: absolute;
-    left:1vw;
+    /* position: absolute; */
+    margin-right:54vw;
+    margin-bottom:0.4vw ;
+    
 }
 .example-header-image {
   background-image: url('../../assets/images/userProfil.png');

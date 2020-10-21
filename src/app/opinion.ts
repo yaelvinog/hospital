@@ -1,3 +1,5 @@
+import { User } from './user';
+import { Department } from './department';
 
 export class Opinion {
     OpinionId:number;
@@ -14,6 +16,9 @@ export class Opinion {
     Rating7PreventionOfMedicalErrors:number;
     IsConfirmed:boolean;
     TotalRating:number;
+    Users:User;
+    Departments:Department;
+
     constructor(OpinionId?:number,UserId?:number,DepartmentId?:number,Title?:string,Summary?:string,
         Rating1GeneralSatisfaction?:number,
         Rating2ListenAndRelate?:number,
@@ -23,7 +28,10 @@ export class Opinion {
         Rating6ConditionsOfHospitalization?:number,
         Rating7PreventionOfMedicalErrors?:number,
         IsConfirmed?:boolean,
-        TotalRating?:number,)
+        TotalRating?:number,
+        Users?:User,
+        Departments?:Department
+        )
         {
             this.OpinionId=0;
             this.UserId=UserId;
@@ -39,6 +47,9 @@ export class Opinion {
             this.Rating7PreventionOfMedicalErrors=Rating7PreventionOfMedicalErrors;
             this.IsConfirmed=true;
             this.TotalRating=0;
+            this.Users=Users;
+            this.Departments=Departments;
+
         }
         
     

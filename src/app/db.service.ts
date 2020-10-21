@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Hospital } from './hospital';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, OperatorFunction } from 'rxjs';
+import { Opinion } from './opinion';
 
 
 @Injectable({
@@ -20,8 +21,8 @@ export class DBService {
    getDeprtmentbyHospitalId(selectedHospital:number):Observable<any>{
     return this.http.get<any>(`http://localhost:60876/api/Hospital/GetDepartmentByHospitalId/${selectedHospital}`)
    }
-   GetAllData():Observable<any>{
-     return this.http.get("http://localhost:60876/api/Hospital/GetAllData");
+   GetAllData():Observable<Hospital[]>{
+     return this.http.get<Hospital[]>("http://localhost:60876/api/Hospital/GetAllData");
    }
    GetHospitalById(hospitalId:number):Observable<Hospital>{
      return this.http.get<Hospital>(`http://localhost:60876/api/Hospital/GetHospitalById/${hospitalId}`)
