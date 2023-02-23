@@ -1,13 +1,15 @@
+import { PageEvent } from "@angular/material/paginator";
 import { Component, OnInit } from "@angular/core";
-import { DBService } from "../db.service";
-import { Hospital } from "../hospital";
 import { ActivatedRoute } from "@angular/router";
+
+import { DBService } from "../db.service";
+import { OpinionService } from "../opinion.service";
+import { UsersService } from "../users.service";
+
+import { Hospital } from "../hospital";
 import { Department } from "../department";
 import { Opinion } from "../opinion";
-import { OpinionService } from "../opinion.service";
 import { User } from "../user";
-import { UsersService } from "../users.service";
-import { PageEvent } from "@angular/material/paginator";
 
 @Component({
   selector: "app-footer",
@@ -23,7 +25,6 @@ export class FooterComponent implements OnInit {
   starCount: number = 5;
   rating: number = 1;
   openId: number = null;
-  //HosImage = "hos1212121.jpg, hos2243243.jpg"
   HospitalObj: Hospital = new Hospital();
   DepartmentArr: Department[] = [];
   OpinionArr: Opinion[] = [];

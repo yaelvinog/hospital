@@ -1,22 +1,26 @@
-import { Component, OnInit, ElementRef, ViewChild, NgZone, AfterViewInit } from '@angular/core';
-import { DBService } from '../db.service';
-import { Hospital } from '../hospital';
-import { Department } from '../department';
-import { MapsAPILoader } from '@agm/core';
-import { TagContentType } from '@angular/compiler';
-import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
-import { StringDecoder } from 'string_decoder';
-import { OpinionService } from '../opinion.service';
-import { User } from '../user';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  NgZone,
+  AfterViewInit,
+} from "@angular/core";
+import { MapsAPILoader } from "@agm/core";
 
-declare const google: any
+import { DBService } from "../db.service";
+
+import { Hospital } from "../hospital";
+import { Department } from "../department";
+
+declare const google: any;
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  @ViewChild('search', { static: false }) searchElementRef: ElementRef;
+  @ViewChild("search", { static: false }) searchElementRef: ElementRef;
   search1: boolean = false;
   HospitalsArr: Hospital[] = [];
   HospitalArrAll: Hospital[] = [];
@@ -31,26 +35,31 @@ export class HomeComponent implements OnInit, AfterViewInit {
   HospitalsArray: Hospital[] = [];
   isSpiner: boolean = false;
   SourceAddress = "סמינר מאיר, בני ברק";
-  constructor(private HospitalService: DBService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  constructor(
+    private HospitalService: DBService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone
+  ) {}
   ratingLevelsFunc(TotalRatingAvg): string {
     switch (true) {
-      case (TotalRatingAvg >= 0.5 && TotalRatingAvg <= 1):
+      case TotalRatingAvg >= 0.5 && TotalRatingAvg <= 1:
         return "טעון שיפור";
-      case (TotalRatingAvg >= 1.5 && TotalRatingAvg <= 2):
+      case TotalRatingAvg >= 1.5 && TotalRatingAvg <= 2:
         return "גרוע";
-      case (TotalRatingAvg >= 2.5 && TotalRatingAvg <= 3):
+      case TotalRatingAvg >= 2.5 && TotalRatingAvg <= 3:
         return "טוב";
-      case (TotalRatingAvg >= 3.5 && TotalRatingAvg <= 4):
+      case TotalRatingAvg >= 3.5 && TotalRatingAvg <= 4:
         return "טוב מאד";
-      case (TotalRatingAvg >= 4.5 && TotalRatingAvg <= 5):
+      case TotalRatingAvg >= 4.5 && TotalRatingAvg <= 5:
         return "מצוין";
       default:
         return " ";
     }
   }
   calculateDistancesHospitals(hospitals: Hospital[]): void {
-
-    this.mapsAPILoader.load().then(() => { this.calculateDistances(this.SourceAddress, hospitals); });
+    this.mapsAPILoader.load().then(() => {
+      this.calculateDistances(this.SourceAddress, hospitals);
+    });
   }
   //The function receives a source address as well as an array of hospitals
   calculateDistances(sourceAddress: string, hospitals: Hospital[]) {
@@ -63,7 +72,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       travelMode: google.maps.TravelMode.DRIVING,
       unitSystem: google.maps.UnitSystem.METRIC,
       avoidHighways: false,
-      avoidTolls: false
+      avoidTolls: false,
     };
     //A loop that passes through the array of hospitals and inserts in each iteration the address of the current hospital into the array of destinations
     for (var i = 0; i < hospitals.length; i++) {
@@ -71,7 +80,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
     service.getDistanceMatrix(request, function (response, status) {
       if (status != google.maps.DistanceMatrixStatus.OK) {
-        alert('Error was: ' + status);
+        alert("Error was: " + status);
       } else {
         var results = response.rows[0].elements;
         // save title, address and index of marker in record for sorting
@@ -81,32 +90,33 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
         //Sort the array by duration from the source address
         results.sort(self.sortByDistDM);
-        self.HospitalsArr = results.map(x => x.hospital);
+        self.HospitalsArr = results.map((x) => x.hospital);
         self.HospitalArrAll = self.HospitalsArr;
         self.isSpiner = false;
-
       }
     });
   }
   //ממינת את התוצאה שחזרה
   sortByDistDM(a, b) {
-    return (a.duration.value - b.duration.value)
+    return a.duration.value - b.duration.value;
   }
   ngOnInit(): void {
     this.getHospitalAll();
   }
   ngAfterViewInit() {
     this.findAddress();
-
   }
   findAddress() {
     if (!this.searchElementRef) {
-      setTimeout(() => { this.findAddress(); }, 2000);
-    }
-    else {
+      setTimeout(() => {
+        this.findAddress();
+      }, 2000);
+    } else {
       this.mapsAPILoader.load().then(() => {
         //A variable that contains what is selected in Autocomplete
-        let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+        let autocomplete = new google.maps.places.Autocomplete(
+          this.searchElementRef.nativeElement
+        );
         autocomplete.addListener("place_changed", () => {
           this.ngZone.run(() => {
             //A variable that contains some datails of the selected address
@@ -122,16 +132,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
   getHospitalAll() {
     this.isSpiner = true;
-    this.HospitalService.GetAllData().subscribe(response => {
+    this.HospitalService.GetAllData().subscribe((response) => {
       this.calculateDistancesHospitals(response);
       this.HospitalsArray = response;
     });
   }
   isfilter(): void {
     this.isFilter = !this.isFilter;
-    if (!this.isFilter)
-      this.getHospitalAll();
-
+    if (!this.isFilter) this.getHospitalAll();
   }
   filteringOk(): void {
     //Sort by high average
@@ -139,41 +147,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.HospitalsArr.sort(function (a, b) {
         return b.TotalRatingAvg - a.TotalRatingAvg;
       });
-    }
-    else {
+    } else {
       //Sort by letters A and B
       if (this.radioSelected == "sortLetter") {
         this.HospitalsArr.sort(function (a, b) {
-          return a.HospitalName > b.HospitalName ? 1 : (a.HospitalName < b.HospitalName ? -1 : 0);
+          return a.HospitalName > b.HospitalName
+            ? 1
+            : a.HospitalName < b.HospitalName
+            ? -1
+            : 0;
         });
       }
     }
   }
-  //Website search function
-  // getVal(value){
-  //   var val = value.target.value;
-  //   if (val && val.trim() != '') {
-  //     this.HospitalsArr=this.HospitalArrAll.filter((item)=>{
-  //       return(
-  //       String(item.HospitalName).toLowerCase().indexOf(val.toLowerCase()) > -1 ||
-  //       String (item.HospitalAddress).toLowerCase().indexOf(val.toLowerCase()) > -1);
-  //     }
-  //     )}
-  //     else{
-  //       this.HospitalsArr=this.HospitalArrAll;
-  //     }
-  // }
+
   valueChanged(e): void {
     if (e.target.value.length == 0) {
       this.isSpiner = true;
       this.SourceAddress = "סמינר מאיר, בני ברק";
       this.calculateDistancesHospitals(this.HospitalsArray);
     }
-    // if(!(this.searchElementRef.nativeElement))
-    // {
-    //   this.SourceAddress="סמינר מאיר, בני ברק";
-    //   this.getHospitalAll();
-    // }
   }
 }
-

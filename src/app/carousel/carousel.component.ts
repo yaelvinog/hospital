@@ -1,27 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: []
+  selector: "app-carousel",
+  templateUrl: "./carousel.component.html",
+  styleUrls: [],
 })
 export class CarouselComponent implements OnInit {
   @Input() slides: any[];
-  // @Input() get slides(value: string | any[]) {
-  //   if (typeof value == 'string') {
-  //     this._slides = JSON.parse(value)
-  //   } else {
-  //     this._slides = value
-  //   }
-  // }
-
-
-  currentSlide=0;
-  constructor() { }
-  
+  currentSlide = 0;
+  constructor() {}
 
   ngOnInit(): void {
-    const s =this.slides;
+    const s = this.slides;
   }
   onPreviousClick() {
     const previous = this.currentSlide - 1;

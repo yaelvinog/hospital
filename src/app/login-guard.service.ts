@@ -1,19 +1,23 @@
-import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { User } from './user';
-
-
+import { Injectable } from "@angular/core";
+import {
+  Router,
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from "@angular/router";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
-export class LoginGuardService implements CanActivate{
-
-  constructor( private router:Router) { }
-  public canActivate(route:ActivatedRouteSnapshot,state:RouterStateSnapshot){
-    let user=sessionStorage.getItem("user");
+export class LoginGuardService implements CanActivate {
+  constructor(private router: Router) {}
+  public canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ) {
+    let user = sessionStorage.getItem("user");
     // user=JSON.parse(user);
-    if(user==null){
+    if (user == null) {
       this.router.navigate(["/login"]);
       return false;
     }

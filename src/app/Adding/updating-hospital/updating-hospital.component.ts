@@ -1,8 +1,9 @@
+import Swal from "sweetalert2";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatTable } from "@angular/material/table";
-import Swal from "sweetalert2";
 
 import { DBService } from "../../db.service";
+
 import { Hospital } from "../../hospital";
 
 @Component({

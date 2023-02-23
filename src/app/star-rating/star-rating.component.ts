@@ -1,22 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-star-rating',
-  templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.css']
+  selector: "app-star-rating",
+  templateUrl: "./star-rating.component.html",
+  styleUrls: ["./star-rating.component.css"],
 })
 export class StarRatingComponent implements OnInit {
-  @Input('rating') rating: number;
-  @Input('starCount') starCount: number;
-  @Input('color') color: string;
-  @Input('isDisabled') isDisabled: boolean;
+  @Input("rating") rating: number;
+  @Input("starCount") starCount: number;
+  @Input("color") color: string;
+  @Input("isDisabled") isDisabled: boolean;
   @Output() ratingUpdated = new EventEmitter();
 
   snackBarDuration: number = 2000;
   ratingArr = [];
 
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     for (let index = 0; index < this.starCount; index++) {
@@ -24,31 +23,31 @@ export class StarRatingComponent implements OnInit {
     }
   }
   onClick(rating: number) {
-    if (!this.isDisabled) { this.ratingUpdated.emit(rating); }
+    if (!this.isDisabled) {
+      this.ratingUpdated.emit(rating);
+    }
     return false;
   }
 
   showIcon(index: number) {
     if (this.rating >= index + 1) {
-      return 'radio_button_checked';
+      return "radio_button_checked";
     } else {
-      return 'radio_button_unchecked';
+      return "radio_button_unchecked";
     }
   }
   getClass(index: number) {
     if (this.rating >= index + 1) {
-      return 'circle full';
+      return "circle full";
     } else if (this.rating - (index + 1) > -1) {
-      return 'circle half';
-    }
-    else {
-      return 'circle';
+      return "circle half";
+    } else {
+      return "circle";
     }
   }
-
 }
 export enum StarRatingColor {
   primary = "primary",
   accent = "accent",
-  warn = "warn"
+  warn = "warn",
 }

@@ -1,23 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Hospital } from '../hospital';
-import { DBService } from '../db.service';
-import { Department } from '../department';
-import { Opinion } from '../opinion';
-import { User } from '../user';
-import { OpinionService } from '../opinion.service';
-import { CheckboxControlValueAccessor } from '@angular/forms';
-import { MatCheckbox } from '@angular/material/checkbox';
-import { flatten } from '@angular/compiler';
-import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
-import { CurrentUserService } from '../current-user.service';
+import Swal from "sweetalert2";
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 
+import { DBService } from "../db.service";
+import { OpinionService } from "../opinion.service";
+import { CurrentUserService } from "../current-user.service";
 
+import { Hospital } from "../hospital";
+import { Department } from "../department";
+import { Opinion } from "../opinion";
+import { User } from "../user";
 
 @Component({
-  selector: 'app-opinion',
-  templateUrl: './opinion.component.html',
-  styleUrls: ['./opinion.component.css']
+  selector: "app-opinion",
+  templateUrl: "./opinion.component.html",
+  styleUrls: ["./opinion.component.css"],
 })
 export class OpinionComponent implements OnInit {
   newOpinion: Opinion;
@@ -31,11 +28,16 @@ export class OpinionComponent implements OnInit {
   starColor: string = "primary";
   starCount: number = 5;
   checked: boolean;
-  constructor(private HospitalService: DBService, private OpinionService: OpinionService, private router: Router, private currentUserService: CurrentUserService) {
-    this.HospitalService.getHospitals().subscribe(response => {
+  constructor(
+    private HospitalService: DBService,
+    private OpinionService: OpinionService,
+    private router: Router,
+    private currentUserService: CurrentUserService
+  ) {
+    this.HospitalService.getHospitals().subscribe((response) => {
       this.LocalArr = <Hospital[]>response;
       //get the user id from sessionStorage
-      let user: any = sessionStorage.getItem('user');
+      let user: any = sessionStorage.getItem("user");
       user = <User>JSON.parse(user);
       this.newOpinion = new Opinion();
       this.newOpinion.UserId = user.UserId;
@@ -43,21 +45,27 @@ export class OpinionComponent implements OnInit {
   }
   sendOpinion() {
     if (this.checked == true) {
-      this.OpinionService.AddNewOpinion(this.newOpinion).subscribe(res => {
-        if (res != null) {
-          Swal.fire('Success', 'חוות דעתך נקלטה בהצלחה!', 'success')
-            .then(() => {
-              this.router.navigateByUrl("footer/" + this.selectedHospital);
-            });
+      this.OpinionService.AddNewOpinion(this.newOpinion).subscribe(
+        (res) => {
+          if (res != null) {
+            Swal.fire("Success", "חוות דעתך נקלטה בהצלחה!", "success").then(
+              () => {
+                this.router.navigateByUrl("footer/" + this.selectedHospital);
+              }
+            );
+          }
+        },
+        (err) => {
+          Swal.fire("Error", "): !אופס..., משהו השתבש", "error");
         }
-      }, (err => { Swal.fire('Error', '): !אופס..., משהו השתבש', 'error') }));
+      );
     }
-    //  this.router.navigateByUrl("home");
   }
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   selectHospital() {
-    this.HospitalService.getDeprtmentbyHospitalId(this.selectedHospital).subscribe(response => {
+    this.HospitalService.getDeprtmentbyHospitalId(
+      this.selectedHospital
+    ).subscribe((response) => {
       this.LocalArrDep = <Department[]>response;
     });
   }

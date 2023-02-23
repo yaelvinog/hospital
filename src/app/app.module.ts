@@ -34,7 +34,6 @@ import {
   SocialAuthServiceConfig,
 } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
-// For MDB Angular Free
 
 @NgModule({
   declarations: [

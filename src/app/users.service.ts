@@ -1,33 +1,36 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { User } from './user';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router}from '@angular/router'
-import { Opinion } from './opinion';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+
+import { User } from "./user";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UsersService {
-  
-  constructor(private http:HttpClient) {
-    
+  constructor(private http: HttpClient) {}
+  getAllUsers(): Observable<any> {
+    return this.http.get<any>("http://localhost:60876/api/Users/GetUsers");
   }
-  getAllUsers():Observable<any>{
-    return this.http.get<any>('http://localhost:60876/api/Users/GetUsers')
+  getUser(email: string, password: string): Observable<User> {
+    return this.http.get<User>(
+      `http://localhost:60876/api/Users/GetUser/${email}/${password}`
+    );
   }
-  getUser(email:string,password:string):Observable<User>{
-     return this.http.get<User>(`http://localhost:60876/api/Users/GetUser/${email}/${password}`);
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(
+      "http://localhost:60876/api/Users/AddUser",
+      user
+    );
   }
-  addUser(user:User):Observable<User>{
-    return this.http.post<User>("http://localhost:60876/api/Users/AddUser",user);
+  sendMail(mail: string, summery: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      `http://localhost:60876/api/Users/SendMailUnapprovedUsers/${mail}/${summery}`
+    );
   }
-  sendMail(mail:string,summery:string):Observable<boolean>{
-    return this.http.get<boolean>(`http://localhost:60876/api/Users/SendMailUnapprovedUsers/${mail}/${summery}`)
-  }
-  
+
   // public uploadImage(file: File, email:string): Observable<ArrayBuffer> {
- 
+
   //   let input = new FormData();
   //   input.append('file', file, file.name);
   //   let headers = new HttpHeaders();

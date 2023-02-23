@@ -1,23 +1,15 @@
-import { Component } from '@angular/core';
-
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: []
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: [],
 })
-
 export class AppComponent {
-  title = 'HospitalAdvisor';
-  users:any;
- 
-  ngOnInit(){
-   
-  }
-  
-  constructor(){
+  title = "HospitalAdvisor";
+  users: any;
 
-  }
-  
+  ngOnInit() {}
+
+  constructor() {}
 }
-
