@@ -9,7 +9,7 @@
 <mat-card-content>
    <div *ngIf="prev">
        <mat-card-title>הוספת חוות דעת</mat-card-title>
-  <div class="div-wrapper">
+   <div class="div-wrapper">
     <mat-form-field class="select-filter">
       <mat-label>בחר בית חולים</mat-label>
       <mat-select [(ngModel)]="selectedHospital" (selectionChange)="selectHospital();" >
@@ -28,7 +28,7 @@
 <!-- <p class="overall-rating"><span>הציון הכולל שלך עבור מחלקה זו</span><app-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></app-star-rating></p> -->
 <mat-form-field appearance="fill" class="title-pinion">
   <mat-label >כותרת חוות הדעת</mat-label>
-  <textarea matInput class="txtarea_title"  [(ngModel)]="newOpinion.Title"></textarea>
+  <textarea matInput class="txtarea_title" spellcheck=true  [(ngModel)]="newOpinion.Title"></textarea>
 </mat-form-field>
 <mat-form-field appearance="fill" class="content-opinion">
   <mat-label >תוכן חוות הדעת</mat-label>

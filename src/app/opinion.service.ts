@@ -13,11 +13,17 @@ export class OpinionService {
   AddNewOpinion(newOpinion:Opinion):Observable<Opinion>{
    return this.http.post<Opinion>("http://localhost:60876/api/Opinion/AddNewOpinion",newOpinion);
   }
-  getAllOpinionByHospital(hospitalId:number):Observable<Opinion[]>{
-    return this.http.get<Opinion[]>(`http://localhost:60876/api/Opinion/getOpinionAll/${hospitalId}`)
+  getAllOpinionByHospital(hospitalId:number,pageSize:number,pageIndex:number):Observable<Opinion>{
+    return this.http.get<Opinion>(`http://localhost:60876/api/Opinion/getAllOpinionByHospital/${hospitalId}/${pageSize}/${pageIndex}`)
   }
-  getAllOpinionByDepartmentId(departmentId:number):Observable<Opinion[]>
+  getAllOpinionByDepartmentId(departmentId:number,pageSize:number,pageIndex:number):Observable<Opinion>
   {
-    return this.http.get<Opinion[]>(`http://localhost:60876/api/Opinion/getAllOpinionByDepId/${departmentId}`)
+    return this.http.get<Opinion>(`http://localhost:60876/api/Opinion/getAllOpinionByDepId/${departmentId}/${pageSize}/${pageIndex}`)
+  }
+  getallOpinion(pageSize:number,pageIndex:number):Observable<Opinion>{
+    return this.http.get<Opinion>(`http://localhost:60876/api/Opinion/getallOpinion/${pageSize}/${pageIndex}`);
+  }
+  updateisConfirmedOfOpinion(opinionObj:Opinion):Observable<Opinion>{
+    return this.http.put<Opinion>("http://localhost:60876/api/Opinion/updateisConfirmedOfOpinion",opinionObj);
   }
 }

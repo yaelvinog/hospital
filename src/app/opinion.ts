@@ -18,6 +18,8 @@ export class Opinion {
     TotalRating:number;
     Users:User;
     Departments:Department;
+    Opinions:Opinion[];
+    Total:number;
 
     constructor(OpinionId?:number,UserId?:number,DepartmentId?:number,Title?:string,Summary?:string,
         Rating1GeneralSatisfaction?:number,
@@ -30,7 +32,8 @@ export class Opinion {
         IsConfirmed?:boolean,
         TotalRating?:number,
         Users?:User,
-        Departments?:Department
+        Departments?:Department,
+        
         )
         {
             this.OpinionId=0;
@@ -49,6 +52,7 @@ export class Opinion {
             this.TotalRating=0;
             this.Users=Users;
             this.Departments=Departments;
+        
 
         }
         

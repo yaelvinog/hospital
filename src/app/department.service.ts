@@ -12,4 +12,10 @@ export class DepartmentService {
   getDepartmentbyId(departmentId:number):Observable<Department>{
       return this.http.get<Department>(`http://localhost:60876/api/Department/getDepartmentbyId/${departmentId}`);
   }
+  updateDepartment(depObj:Department):Observable<Department>{
+    return this.http.put<Department>("http://localhost:60876/api/Department/updateDepartment",depObj);
+  }
+  addNewDepartment(newDep):Observable<Department>{
+    return this.http.post<Department>("http://localhost:60876/api/Department/addNewDepartment",newDep);
+  }
 }

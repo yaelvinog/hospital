@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
-import { UsersService } from './users.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: []
 })
+
 export class AppComponent {
   title = 'HospitalAdvisor';
   users:any;
-  
+ 
   ngOnInit(){
+   
   }
   
   constructor(){
 
   }
-
-
+  
 }
 

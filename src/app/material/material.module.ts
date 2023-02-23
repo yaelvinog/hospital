@@ -10,8 +10,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatListModule} from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -29,10 +32,14 @@ import {MatRadioModule} from '@angular/material/radio';
     MatCheckboxModule,
     MatExpansionModule,
     MatListModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatMenuModule,
+    MatPaginatorModule
+   
     
 
   ],
-  exports:[MatButtonModule,MatFormFieldModule,MatSelectModule,MatInputModule,MatIconModule,MatCardModule,MatTabsModule,MatToolbarModule,MatCheckboxModule,MatRadioModule]
+  exports:[MatButtonModule,MatFormFieldModule,MatSelectModule,MatInputModule,MatIconModule,MatCardModule,MatTabsModule,MatToolbarModule,MatCheckboxModule,MatRadioModule,MatTableModule,MatMenuModule,MatListModule,MatPaginatorModule]
 })
 export class MaterialModule { }

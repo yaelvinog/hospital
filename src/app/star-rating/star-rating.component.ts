@@ -6,14 +6,14 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } fro
   styleUrls: ['./star-rating.component.css']
 })
 export class StarRatingComponent implements OnInit {
-  @Input('rating')  rating: number;
-  @Input('starCount')  starCount: number;
-  @Input('color')  color: string;
-  @Input('isDisabled')  isDisabled: boolean;
-  @Output()  ratingUpdated = new EventEmitter();
+  @Input('rating') rating: number;
+  @Input('starCount') starCount: number;
+  @Input('color') color: string;
+  @Input('isDisabled') isDisabled: boolean;
+  @Output() ratingUpdated = new EventEmitter();
 
-   snackBarDuration: number = 2000;
-   ratingArr = [];
+  snackBarDuration: number = 2000;
+  ratingArr = [];
 
 
   constructor() { }
@@ -23,26 +23,25 @@ export class StarRatingComponent implements OnInit {
       this.ratingArr.push(index);
     }
   }
-  onClick(rating:number) {
-    if(!this.isDisabled)
-    {this.ratingUpdated.emit(rating);}
+  onClick(rating: number) {
+    if (!this.isDisabled) { this.ratingUpdated.emit(rating); }
     return false;
   }
 
-  showIcon(index:number) {
+  showIcon(index: number) {
     if (this.rating >= index + 1) {
       return 'radio_button_checked';
     } else {
       return 'radio_button_unchecked';
     }
   }
-  getClass(index:number) {
+  getClass(index: number) {
     if (this.rating >= index + 1) {
       return 'circle full';
-    } else if(this.rating - (index +1) > -1) {
+    } else if (this.rating - (index + 1) > -1) {
       return 'circle half';
     }
-    else{
+    else {
       return 'circle';
     }
   }

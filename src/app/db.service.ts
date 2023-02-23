@@ -3,6 +3,7 @@ import { Hospital } from './hospital';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, OperatorFunction } from 'rxjs';
 import { Opinion } from './opinion';
+import { Department } from './department';
 
 
 @Injectable({
@@ -18,14 +19,23 @@ export class DBService {
    {
      return this.http.get<any>("http://localhost:60876/api/Hospital/GetHospitals");
    }
-   getDeprtmentbyHospitalId(selectedHospital:number):Observable<any>{
-    return this.http.get<any>(`http://localhost:60876/api/Hospital/GetDepartmentByHospitalId/${selectedHospital}`)
+   getDeprtmentbyHospitalId(selectedHospital:number):Observable<Department[]>{
+    return this.http.get<Department[]>(`http://localhost:60876/api/Hospital/GetDepartmentByHospitalId/${selectedHospital}`)
    }
    GetAllData():Observable<Hospital[]>{
      return this.http.get<Hospital[]>("http://localhost:60876/api/Hospital/GetAllData");
    }
    GetHospitalById(hospitalId:number):Observable<Hospital>{
      return this.http.get<Hospital>(`http://localhost:60876/api/Hospital/GetHospitalById/${hospitalId}`)
+   }
+   updateHospital(hosObj:Hospital):Observable<Hospital>{
+      return this.http.put<Hospital>("http://localhost:60876/api/Hospital/UpdateHospital",hosObj);
+   }
+   addnewHospital(Hospital:Hospital):Observable<Hospital>{
+     return this.http.post<Hospital>("http://localhost:60876/api/Hospital/addnewHospital",Hospital)
+   }
+   GetRating7ofHospitals(selectedTypeQuestion:number):Observable<number[]>{
+     return this.http.get<number[]>(`http://localhost:60876/api/Hospital/GetRating7ofHospitals/${selectedTypeQuestion}`);
    }
   //  uploadMultiImages(imagesMultiFiles: File[], id: number) {
    

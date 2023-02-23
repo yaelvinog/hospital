@@ -11,7 +11,7 @@ export class LoginGuardService implements CanActivate{
 
   constructor( private router:Router) { }
   public canActivate(route:ActivatedRouteSnapshot,state:RouterStateSnapshot){
-    let user:any=localStorage.getItem("user");
+    let user=sessionStorage.getItem("user");
     // user=JSON.parse(user);
     if(user==null){
       this.router.navigate(["/login"]);

@@ -121,7 +121,7 @@ transparent)
     right:6.5vw;
     cursor: pointer;
   }
-  table{
+  .table-details{
     position: relative;
     left:23vw;
     top:5vw;
@@ -193,3 +193,58 @@ mat-card-footer img{
   padding: .4375em 0;
   text-align: right;
 }
+#mydiv {  
+  position:absolute;
+  top:5.2vw;
+  left:0;
+  width:100%;
+  height:89%;
+  z-index:1000;
+  background-color:#fafafa;
+  opacity: .5;
+}
+.ajax-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -32px; /* -1 * image width / 2 */
+  margin-top: -32px;  /* -1 * image height / 2 */
+  display: block;     
+}
+ .icon-settings:before{
+  content: ""!important;
+}
+
+.mat-checkbox-ripple .mat-ripple-element,.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #b73232 !important;
+}
+  .mat-paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 56px;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    margin: auto !important;
+    color:black;
+    font-size: large;
+    text-align: center;
+    text-shadow: 0 0 1px rgb(0 0 0);
+}
+.mat-paginator-icon {
+  width: 28px;
+  fill: currentColor;
+  color:black !important;
+}
+/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+.basic-container {
+  padding: 30px;
+}
+.version-info {
+  font-size: 8pt;
+  float: right;
+  margin: 8px;
+} */

@@ -10,9 +10,7 @@ export class Department {
     IsConfirmed:boolean;
     IsDeleted:boolean;
     VisitTime:string;
-    DepImage:string;
     Tel:string;
-    Summary:string;
     Rating1GeneralSatisfactionAvg:number;
     Rating2ListenAndRelateAvg:number;
     Rating3GettingHelpEasilyAvg:number;
@@ -20,6 +18,7 @@ export class Department {
     Rating5AnEfficientProcessAvg:number;
     Rating6ConditionsOfHospitalizationAvg:number;
     Rating7PreventionOfMedicalErrorsAvg:number;
+    ISEDITED?:boolean;
     constructor(
         DepartmentId?:number,
         HospitalId?:number,
@@ -30,9 +29,7 @@ export class Department {
         IsConfirmed?:boolean,
         IsDeleted?:boolean,
         VisitTime?:string,
-        DepImage?:string,
         Tel?:string,
-        Summary?:string,
         Rating1GeneralSatisfactionAvg?:number,
         Rating2ListenAndRelateAvg?:number,
         Rating3GettingHelpEasilyAvg?:number,
@@ -51,9 +48,7 @@ export class Department {
         this.IsConfirmed=IsConfirmed;
         this.IsDeleted=IsDeleted;
         this.VisitTime=VisitTime;
-        this.DepImage=DepImage;
         this.Tel=Tel;
-        this.Summary=Summary;
         this.Rating1GeneralSatisfactionAvg=Rating1GeneralSatisfactionAvg;
         this.Rating2ListenAndRelateAvg=Rating2ListenAndRelateAvg;
         this.Rating3GettingHelpEasilyAvg=Rating3GettingHelpEasilyAvg;

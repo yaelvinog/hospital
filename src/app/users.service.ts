@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router}from '@angular/router'
+import { Opinion } from './opinion';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class UsersService {
   addUser(user:User):Observable<User>{
     return this.http.post<User>("http://localhost:60876/api/Users/AddUser",user);
   }
+  sendMail(mail:string,summery:string):Observable<boolean>{
+    return this.http.get<boolean>(`http://localhost:60876/api/Users/SendMailUnapprovedUsers/${mail}/${summery}`)
+  }
+  
   // public uploadImage(file: File, email:string): Observable<ArrayBuffer> {
  
   //   let input = new FormData();

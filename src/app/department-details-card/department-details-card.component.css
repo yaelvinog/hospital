@@ -70,6 +70,9 @@ mat-card-title,
   strong{
     margin-right:5vw;
   }
+  .comment_more_ratings{
+    margin-right:5.5vw;
+  }
   .icon-forum{
       position: absolute;
       top:0;
@@ -113,22 +116,28 @@ mat-card-title,
   }
   .div-rating-wrapper{
     margin-top: -4vh; 
-    padding-bottom: 7vh; 
+    padding-bottom: 7vh;
+  }
+  .rating12 ,.rating456 ,.rating67{
+    display: inline-block;
+    position: relative;
+   direction: rtl;
   }
   .rating12{
-    display: inline-block;
-    position: relative;
     left: 51vw;
-   
   }
   .rating456{
-    display: inline-block;
-    position: relative;
     top: 2vw;
     left:12vw;
   }
   .rating67{
-    display: inline-block;
-    position: relative;
     left:-28vw;
+  }
+  mat-paginator {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    background: transparent !important;
+    margin-right: 20vw;
+    margin-top: 14vh;
   }

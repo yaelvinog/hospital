@@ -7,7 +7,11 @@ import { OpinionComponent } from './opinion/opinion.component';
 import { LoginGuardService } from './login-guard.service';
 import { FooterComponent } from './footer/footer.component';
 import { DepartmentDetailsCardComponent } from './department-details-card/department-details-card.component';
-
+import { UpdatingHospitalComponent } from './Adding/updating-hospital/updating-hospital.component';
+import { AddDepartmentComponent } from './update/add-department/add-department.component';
+import { ApproveOrDisqualifyOpinionnComponent } from './approve-or-disqualify-opinionn/approve-or-disqualify-opinionn.component';
+import { AboutComponent } from './about/about.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 
 
@@ -36,6 +40,26 @@ const routes: Routes = [
 {
   path:'department/:id',
   component:DepartmentDetailsCardComponent
+},
+{
+path:'updatingOrEditHospital',
+component:UpdatingHospitalComponent
+},
+{
+  path:'updatingOrEditDepartment',
+  component:AddDepartmentComponent
+},
+{
+  path:'ApproveOrDisqualifyOpinion',
+  component:ApproveOrDisqualifyOpinionnComponent
+},
+{
+  path:'About',
+  component:AboutComponent
+},
+{
+  path:"Bar-chart",
+  component:BarChartComponent
 }
 ];
 @NgModule({
