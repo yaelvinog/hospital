@@ -71,11 +71,13 @@ export class FooterComponent implements OnInit {
   onRatingChanged(stars: number) {
     this.rating = stars;
   }
+
   openUrl(url: string) {
     if (url != "" && url != undefined) {
       window.open(url, "_blank");
     }
   }
+
   toggleImg() {
     if (this.counter === this.images.length - 1) {
       this.counter = 0;

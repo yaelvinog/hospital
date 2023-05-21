@@ -10,6 +10,7 @@ import { Hospital } from "../hospital";
 import { Department } from "../department";
 import { Opinion } from "../opinion";
 import { User } from "../user";
+import { UsersService } from "../users.service";
 
 @Component({
   selector: "app-opinion",
@@ -32,7 +33,7 @@ export class OpinionComponent implements OnInit {
     private HospitalService: DBService,
     private OpinionService: OpinionService,
     private router: Router,
-    private currentUserService: CurrentUserService
+    private ServiceUser: UsersService
   ) {
     this.HospitalService.getHospitals().subscribe((response) => {
       this.LocalArr = <Hospital[]>response;
@@ -40,7 +41,15 @@ export class OpinionComponent implements OnInit {
       let user: any = sessionStorage.getItem("user");
       user = <User>JSON.parse(user);
       this.newOpinion = new Opinion();
-      this.newOpinion.UserId = user.UserId;
+      if (user.userId !== undefined) {
+        this.newOpinion.UserId = user.UserId;
+      } else {
+        this.ServiceUser.getUser(user.Email, user.UserPassword).subscribe(
+          (user) => {
+            this.newOpinion.UserId = user.UserId;
+          }
+        );
+      }
     });
   }
   sendOpinion() {

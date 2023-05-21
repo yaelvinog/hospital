@@ -6,6 +6,7 @@ import { DepartmentService } from "../../department.service";
 
 import { Hospital } from "../../hospital";
 import { Department } from "../../department";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-add-department",
@@ -13,7 +14,7 @@ import { Department } from "../../department";
   styleUrls: ["./add-department.component.css"],
 })
 export class AddDepartmentComponent implements OnInit {
-  selectedHospital: number;
+  selectedHospital: string = "";
   selectedHospitalName: string = "";
   arrHos: Hospital[] = [];
   departmentOriginal: Department[] = [];
@@ -37,8 +38,9 @@ export class AddDepartmentComponent implements OnInit {
   ngOnInit(): void {
     this.hospitalService.GetAllData().subscribe((res) => {
       this.arrHos = res;
-      this.selectedHospital = this.arrHos[0].HospitalId;
+      this.selectedHospital = this.arrHos[0].HospitalId.toString();
       this.selectedHospitalName = this.arrHos[0].HospitalName;
+
       this.selectHospital();
     });
   }
@@ -47,10 +49,10 @@ export class AddDepartmentComponent implements OnInit {
   }
   selectHospital() {
     this.selectedHospitalName = this.arrHos.find(
-      (x) => x.HospitalId == this.selectedHospital
+      (x) => x.HospitalId.toString() == this.selectedHospital
     ).HospitalName;
     this.hospitalService
-      .getDeprtmentbyHospitalId(this.selectedHospital)
+      .getDeprtmentbyHospitalId(Number(this.selectedHospital))
       .subscribe((res) => {
         this.dataSource.data = res;
         this.departmentOriginal = res.map((x) => Object.assign({}, x));
@@ -60,7 +62,7 @@ export class AddDepartmentComponent implements OnInit {
     if (!this.dataSource.data.find((x) => x.DepartmentId == 0)) {
       const newDep = new Department(
         0,
-        this.selectedHospital,
+        Number(this.selectedHospital),
         null,
         "",
         "",
@@ -76,18 +78,17 @@ export class AddDepartmentComponent implements OnInit {
     }
   }
   redirectToUpdate(depId: number) {
+    let department: Department = this.dataSource.data.find(
+      (x) => x.DepartmentId == depId
+    );
     if (depId == 0) {
-      let newDep: Department = this.dataSource.data.find(
-        (x) => x.DepartmentId == depId
-      );
-      this.departmentService.addNewDepartment(newDep).subscribe((res) => {
-        alert("addion");
+      this.departmentService.addNewDepartment(department).subscribe((res) => {
+        alert("addtion");
       });
     } else {
-      let dep: Department = this.dataSource.data.find(
-        (d) => d.DepartmentId == depId
-      );
-      this.departmentService.updateDepartment(dep).subscribe((res) => {});
+      this.departmentService
+        .updateDepartment(department)
+        .subscribe((res) => {});
     }
     this.refreshTable();
   }
@@ -110,11 +111,24 @@ export class AddDepartmentComponent implements OnInit {
     this.refreshTable();
   }
   redirectToDelete(depId: number) {
-    let deleteDp: Department = this.dataSource.data.find(
-      (x) => x.DepartmentId == depId
-    );
-    deleteDp.IsConfirmed = false;
-    this.departmentService.updateDepartment(deleteDp).subscribe((res) => {});
-    this.refreshTable();
+    Swal.fire({
+      title: "?האם אתה בטוח",
+      html: "האם אתה בטוח שברצונך למחוק?",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonText: "למחיקה",
+      cancelButtonText: "לביטול",
+    }).then((result) => {
+      if (result.value) {
+        let deleteDp: Department = this.dataSource.data.find(
+          (x) => x.DepartmentId == depId
+        );
+        deleteDp.IsConfirmed = false;
+        this.departmentService
+          .updateDepartment(deleteDp)
+          .subscribe((res) => {});
+      }
+    });
+    this.selectHospital();
   }
 }

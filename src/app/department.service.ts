@@ -19,7 +19,7 @@ export class DepartmentService {
       depObj
     );
   }
-  addNewDepartment(newDep): Observable<Department> {
+  addNewDepartment(newDep: Department): Observable<Department> {
     return this.http.post<Department>(
       "http://localhost:60876/api/Department/addNewDepartment",
       newDep

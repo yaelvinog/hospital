@@ -1,3 +1,5 @@
+import { Department } from "./department";
+
 export class Hospital {
   HospitalId: number;
   HospitalName: string;
@@ -17,7 +19,7 @@ export class Hospital {
   Duration?: number;
   ISEDITED?: boolean;
   images: any[];
-
+  Departments: Department[];
   constructor(
     HospitalId?: number,
     HospitalName?: string,
@@ -33,7 +35,8 @@ export class Hospital {
     Rating5AnEfficientProcessAvg?: number,
     Rating6ConditionsOfHospitalizationAvg?: number,
     Rating7PreventionOfMedicalErrorsAvg?: number,
-    TotalRatingAvg?: number
+    TotalRatingAvg?: number,
+    Departments?: Department[]
   ) {
     this.HospitalId = HospitalId;
     this.HospitalName = HospitalName;
@@ -52,5 +55,6 @@ export class Hospital {
     this.Rating7PreventionOfMedicalErrorsAvg =
       Rating7PreventionOfMedicalErrorsAvg;
     this.TotalRatingAvg = TotalRatingAvg;
+    this.Departments = Departments;
   }
 }

@@ -40,9 +40,9 @@ export class Department {
     this.HospitalId = HospitalId;
     this.DepartmentTypeId = DepartmentTypeId;
     this.FullName = FullName;
-    (this.DepartmentUrl = DepartmentUrl),
-      (this.DepartmentManagerName = DepartmentManagerName),
-      (this.IsConfirmed = IsConfirmed);
+    this.DepartmentUrl = DepartmentUrl;
+    this.DepartmentManagerName = DepartmentManagerName;
+    this.IsConfirmed = IsConfirmed;
     this.IsDeleted = IsDeleted;
     this.VisitTime = VisitTime;
     this.Tel = Tel;

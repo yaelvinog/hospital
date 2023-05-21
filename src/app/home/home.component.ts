@@ -34,12 +34,47 @@ export class HomeComponent implements OnInit, AfterViewInit {
   radioSelected: string;
   HospitalsArray: Hospital[] = [];
   isSpiner: boolean = false;
-  SourceAddress = "סמינר מאיר, בני ברק";
+  originalAddress: string = "";
+  sourceAddress: string = "";
   constructor(
     private HospitalService: DBService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {}
+
+  getCurrentLocation(): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.reverseGeocode(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+        },
+        (error) => {
+          console.log("Error occurred while retrieving location:", error);
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  reverseGeocode(latitude: number, longitude: number): void {
+    this.mapsAPILoader.load().then(() => {
+      const geocoder = new google.maps.Geocoder();
+      const latLng = new google.maps.LatLng(latitude, longitude);
+
+      geocoder.geocode({ location: latLng }, (results, status) => {
+        if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
+          this.getHospitalAll(results[0].formatted_address);
+        } else {
+          console.log("Reverse geocoding failed:", status);
+        }
+      });
+    });
+  }
+
   ratingLevelsFunc(TotalRatingAvg): string {
     switch (true) {
       case TotalRatingAvg >= 0.5 && TotalRatingAvg <= 1:
@@ -58,7 +93,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
   calculateDistancesHospitals(hospitals: Hospital[]): void {
     this.mapsAPILoader.load().then(() => {
-      this.calculateDistances(this.SourceAddress, hospitals);
+      this.calculateDistances(this.sourceAddress, hospitals);
     });
   }
   //The function receives a source address as well as an array of hospitals
@@ -101,7 +136,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return a.duration.value - b.duration.value;
   }
   ngOnInit(): void {
-    this.getHospitalAll();
+    this.getCurrentLocation();
   }
   ngAfterViewInit() {
     this.findAddress();
@@ -122,7 +157,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
             //A variable that contains some datails of the selected address
             let place = autocomplete.getPlace();
             //The source address contains the selected address
-            this.SourceAddress = place.formatted_address;
+            this.sourceAddress = place.formatted_address;
             this.isSpiner = true;
             this.calculateDistancesHospitals(this.HospitalsArray);
           });
@@ -130,17 +165,22 @@ export class HomeComponent implements OnInit, AfterViewInit {
       });
     }
   }
-  getHospitalAll() {
+
+  getHospitalAll(sourceAddress: string) {
+    this.sourceAddress = sourceAddress;
+    this.originalAddress = sourceAddress;
     this.isSpiner = true;
     this.HospitalService.GetAllData().subscribe((response) => {
       this.calculateDistancesHospitals(response);
       this.HospitalsArray = response;
     });
   }
+
   isfilter(): void {
     this.isFilter = !this.isFilter;
-    if (!this.isFilter) this.getHospitalAll();
+    if (!this.isFilter) this.getHospitalAll(this.sourceAddress);
   }
+
   filteringOk(): void {
     //Sort by high average
     if (this.radioSelected == "sortAvg") {
@@ -164,7 +204,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   valueChanged(e): void {
     if (e.target.value.length == 0) {
       this.isSpiner = true;
-      this.SourceAddress = "סמינר מאיר, בני ברק";
+      this.sourceAddress = this.originalAddress;
       this.calculateDistancesHospitals(this.HospitalsArray);
     }
   }

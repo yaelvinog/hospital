@@ -61,7 +61,7 @@ export class SignUpComponent implements OnInit {
           this.currentUserService.currentUser = user;
           Swal.fire({
             title: "",
-            html: " נרשמת בהצלחה!",
+            html: "!נרשמת בהצלחה",
             icon: "success",
             showCancelButton: true,
             confirmButtonText: "להוספת חות דעת ",

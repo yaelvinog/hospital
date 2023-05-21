@@ -28,15 +28,4 @@ export class UsersService {
       `http://localhost:60876/api/Users/SendMailUnapprovedUsers/${mail}/${summery}`
     );
   }
-
-  // public uploadImage(file: File, email:string): Observable<ArrayBuffer> {
-
-  //   let input = new FormData();
-  //   input.append('file', file, file.name);
-  //   let headers = new HttpHeaders();
-  //   headers.append('Content-Type', 'multipart/form-data');
-  //   let options = { headers: headers };
-
-  //   return this.http.post<ArrayBuffer>(`http://localhost:60876/api/User/upload/${email}`, input, options);
-  // }
 }

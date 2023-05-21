@@ -29,11 +29,6 @@ import { AddDepartmentComponent } from "./update/add-department/add-department.c
 import { ApproveOrDisqualifyOpinionnComponent } from "./approve-or-disqualify-opinionn/approve-or-disqualify-opinionn.component";
 import { AboutComponent } from "./about/about.component";
 import { BarChartComponent } from "./bar-chart/bar-chart.component";
-import {
-  SocialLoginModule,
-  SocialAuthServiceConfig,
-} from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
 
 @NgModule({
   declarations: [
@@ -69,29 +64,14 @@ import { GoogleLoginProvider } from "angularx-social-login";
     MatTooltipModule,
     IvyCarouselModule,
     ChartsModule,
-    SocialLoginModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyCkipGY_VwhpPD-MX0_BlHwSm1HPC8u4xA",
       libraries: ["places"],
     }),
   ],
+
   exports: [MaterialModule],
-  providers: [
-    {
-      provide: "SocialAuthServiceConfig",
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              "127424291601-lpsa4o7v5571r8c5ajkj4tfr17rbu6r7.apps.googleusercontent.com"
-            ),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

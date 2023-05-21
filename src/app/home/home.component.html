@@ -13,7 +13,7 @@
 </div>
 <div class="search">
   <input #search autocorrect="on" autocapitalize="off" spellcheck="off" type="text" id="inputSearch"
-    (input)="valueChanged($event)">
+    placeholder="..חפש כתובת" (input)="valueChanged($event)">
   <mat-icon class="icon-search">search</mat-icon>
 </div>
 <div class="card col-3" *ngFor="let item of HospitalsArr | paginate: { itemsPerPage: 4, currentPage: p };">

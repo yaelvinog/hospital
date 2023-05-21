@@ -41,10 +41,12 @@ export class UpdatingHospitalComponent implements OnInit {
       this.hospitalsOriginal = res.map((x) => Object.assign({}, x));
     });
   };
+
   //refresh table
   refresh(): void {
     this.table.renderRows();
   }
+
   redirectToUpdate(hosId: number): void {
     let hosObj: Hospital = this.dataSource.data.find(
       (h) => h.HospitalId == hosId
@@ -109,7 +111,9 @@ export class UpdatingHospitalComponent implements OnInit {
         );
         hosObj.IsConfirmed = false;
         this.hospitalService.updateHospital(hosObj).subscribe((res) => {
-          if (res) alert("delete");
+          if (res) {
+            this.refresh();
+          }
         });
       }
     });
